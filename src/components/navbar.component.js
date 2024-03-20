@@ -1,0 +1,74 @@
+import { Link } from "react-router-dom";
+
+import { Menu } from "react-feather";
+
+import { LogoImg } from "../utils/images";
+
+const Navbar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg sticky-top">
+      <div className="container">
+        <Link className="navbar-brand abs" to="/">
+          <img src={LogoImg} width="200px" alt="brand-logo" />
+        </Link>
+        <button
+          className="navbar-toggler btn btn-secondary btn-toggle ms-auto"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseNavbar"
+        >
+          <Menu />
+        </button>
+        <div
+          className="navbar-collapse collapse text-center text-lg-start"
+          id="collapseNavbar"
+        >
+          <ul className="navbar-nav gap-lg-3">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/specialties"
+                data-bs-toggle="collapse"
+              >
+                Specialties
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/what-to-expect"
+                data-bs-toggle="collapse"
+              >
+                What To Expect
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/faq" data-bs-toggle="collapse">
+                FAQ
+              </Link>
+            </li>
+          </ul>
+          <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li className="nav-item">
+              <Link to="/contact">
+                <button className="btn btn-primary">Contact</button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@use "./abstracts/" as *;
+
+* {
+  font-family: $font-primary;
+  box-sizing: border-box;
+  cursor: default;
+  letter-spacing: -0.01em !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
+  overflow-y: overlay;
+}
+
+body {
+  padding: 0 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.navbar {
+  .navbar-brand {
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .navbar-nav {
+    .nav-item {
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+
+      @include transition;
+
+      &:after {
+        content: "•";
+        opacity: 0;
+        color: $primary;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        @include transition;
+      }
+
+      &:hover {
+        color: $primary;
+
+        &:after {
+          opacity: 1;
+          bottom: -8px;
+        }
+      }
+    }
+  }
+
+  .btn-toggle {
+    padding: 4px 8px;
+    color: $secondary;
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  @include transition;
+
+  &.btn-primary {
+    background-color: $primary;
+
+    &:hover {
+      box-shadow: 0px 4px 40px -3px rgba($primary, 0.5);
+      transform: translateY(-2px);
+    }
+  }
 }
