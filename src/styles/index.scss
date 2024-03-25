@@ -25,15 +25,48 @@ body {
   font-family: $font-secondary;
 }
 
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  color: $dark;
+  @include transition;
+
+  &.btn-primary {
+    background-color: $primary;
+
+    &:hover {
+      box-shadow: 0px 4px 40px -3px rgba($primary, 0.5);
+      transform: translateY(-2px);
+    }
+  }
+}
+
 .navbar {
   padding: 20px 0;
+  border-radius: 0 0 20px 20px;
+  background-image: linear-gradient(
+    to right,
+    rgba($secondary, 0.2),
+    rgba($primary, 0.2)
+  );
+  backdrop-filter: blur(15px);
+  opacity: 1;
+  transition: all 0.25s ease 0s !important;
 
-  @media screen and (min-width: $mobile-res) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
+  @media screen and (max-width: $mobile-res) {
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+    background-image: linear-gradient(
+      to right,
+      rgba($light, 0.75),
+      rgba($light, 0.75)
+    );
+
+    .navbar-nav {
+      margin: 20px 0;
+    }
   }
 
   .navbar-brand {
@@ -95,23 +128,6 @@ body {
   }
 }
 
-.btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  @include transition;
-
-  &.btn-primary {
-    background-color: $primary;
-
-    &:hover {
-      box-shadow: 0px 4px 40px -3px rgba($primary, 0.5);
-      transform: translateY(-2px);
-    }
-  }
-}
-
 #homePage {
   #landingSection {
     position: relative;
@@ -153,12 +169,12 @@ body {
       padding: 20px 28px;
       font-size: 18px;
       font-weight: 600;
-      color: $dark;
       box-shadow: 0px 4px 40px -3px rgba($secondary, 0.5);
     }
 
     @media screen and (max-width: $mobile-res) {
-      min-height: 88vh;
+      min-height: 100vh;
+      background-position: center;
 
       h1 {
         font-size: 60px;
