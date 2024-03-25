@@ -2,14 +2,22 @@ import { Link } from "react-router-dom";
 
 import { Menu } from "react-feather";
 
-import { LogoImg } from "../utils/images";
+import { LogoImg, LogoDarkImg } from "../utils/images";
+
+import useIsDesktop from "../hooks/useIsDesktop";
 
 const Navbar = () => {
+  const useDesktop = useIsDesktop();
+
   return (
-    <nav className="navbar navbar-expand-lg sticky-top">
+    <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <Link className="navbar-brand abs" to="/">
-          <img src={LogoImg} width="200px" alt="brand-logo" />
+        <Link className="navbar-brand abs me-5 mb-2" to="/">
+          <img
+            src={useDesktop ? LogoImg : LogoDarkImg}
+            width="200px"
+            alt="brand-logo"
+          />
         </Link>
         <button
           className="navbar-toggler btn btn-secondary btn-toggle ms-auto"
