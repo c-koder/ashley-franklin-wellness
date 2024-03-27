@@ -355,3 +355,20 @@ footer {
     margin: 0;
   }
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+
+  @media only screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($secondary, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
