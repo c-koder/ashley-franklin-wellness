@@ -32,7 +32,7 @@ body {
 .btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-weight: 500;
   font-size: 18px;
   color: $dark;
@@ -63,9 +63,27 @@ body {
   }
 }
 
+.form-label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  padding: 14px 18px;
+  box-shadow: none !important;
+  border: 1px solid rgba($secondary, 0.25);
+  cursor: text;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0px 6px 20px -9px rgba($primary, 0.25) !important;
+  }
+}
+
 .navbar {
   padding: 20px 0;
-  border-radius: 0 0 20px 20px;
+  // border-radius: 0 0 20px 20px;
   background-image: linear-gradient(
     to right,
     rgba($secondary, 0.3),
@@ -474,10 +492,71 @@ body {
   }
 }
 
+#contactPage {
+  margin: 11vh 0 12vh 0;
+  position: relative;
+
+  .title-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background-image: url(../assets/images/contact_img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+
+    h1 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      font-size: 72px;
+      font-weight: 600;
+      text-align: center;
+      color: $light;
+      text-shadow: 0px 9px 18px rgba($dark, 0.5);
+    }
+  }
+
+  p {
+    font-size: 20px;
+    font-family: $font-secondary;
+    line-height: 1.75;
+    font-weight: 500;
+
+    span {
+      font-family: $font-secondary !important;
+      font-weight: 700;
+    }
+  }
+
+  @media screen and (max-width: $mobile-res) {
+    margin-top: 5vh;
+
+    .title-box {
+      height: 260px;
+
+      h1 {
+        font-size: 48px;
+        top: 50%;
+        bottom: 0;
+      }
+    }
+
+    .text-box {
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 footer {
   padding: 30px 0;
   margin-top: 60px;
-  border-radius: 20px 20px 0 0;
+  // border-radius: 20px 20px 0 0;
   background-image: linear-gradient(
     to left,
     rgba($secondary, 0.2),
