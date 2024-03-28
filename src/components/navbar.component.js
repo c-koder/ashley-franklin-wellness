@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Menu } from "react-feather";
+import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/solid";
 
 import { LogoImg, LogoDarkImg } from "../utils/images";
 
@@ -25,7 +25,7 @@ const Navbar = () => {
           data-bs-toggle="collapse"
           data-bs-target="#collapseNavbar"
         >
-          <Menu />
+          <Bars3Icon />
         </button>
         <div
           className="navbar-collapse collapse text-center text-lg-start"
@@ -61,6 +61,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/contact"
+                data-bs-toggle="collapse"
+              >
+                Contact
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/faq" data-bs-toggle="collapse">
                 FAQ
               </Link>
@@ -69,7 +78,10 @@ const Navbar = () => {
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <Link to="/contact">
-                <button className="btn btn-primary">Contact</button>
+                <button className="btn btn-primary">
+                  <PhoneIcon />
+                  774-476-0487
+                </button>
               </Link>
             </li>
           </ul>
