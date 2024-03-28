@@ -48,6 +48,10 @@ body {
 
     &:hover {
       color: $light;
+
+      svg {
+        fill: $light;
+      }
     }
   }
 
@@ -60,6 +64,12 @@ body {
       color: $secondary;
       border-color: $secondary;
     }
+  }
+
+  svg {
+    width: 20px;
+    cursor: pointer;
+    @include transition;
   }
 }
 
@@ -150,6 +160,15 @@ body {
           bottom: -8px;
         }
       }
+    }
+  }
+
+  .btn {
+    font-weight: 600;
+
+    svg {
+      margin-right: 6px;
+      fill: $dark;
     }
   }
 

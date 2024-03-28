@@ -1,9 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { useEffect } from "react";
+
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Footer from "../components/footer.component";
 import Navbar from "../components/navbar.component";
@@ -11,8 +8,14 @@ import Navbar from "../components/navbar.component";
 import { routes } from "./routes";
 
 const Main = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
+
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         {routes.map((route, index) => (
@@ -21,7 +24,7 @@ const Main = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 };
 

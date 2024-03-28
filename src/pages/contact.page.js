@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Contact = () => {
   const [data, setData] = useState({
@@ -13,10 +13,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   return (
     <div id="contactPage">

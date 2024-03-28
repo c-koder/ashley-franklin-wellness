@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { HomeImg2, HomeImg3, HomeImg4 } from "../utils/images";
 
 const Home = () => {
@@ -18,7 +19,9 @@ const Home = () => {
               Quiet your negative thoughts and awaken a supportive inner voice.
             </h5>
           </div>
-          <button className="btn btn-primary">Start Your Journey</button>
+          <Link to="/contact">
+            <button className="btn btn-primary">Make an Appointment</button>
+          </Link>
         </div>
       </section>
       <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent">
@@ -128,7 +131,9 @@ const Home = () => {
               therapy, give me a shout. I’m here to listen and help you navigate
               this crazy journey we call womanhood, one step at a time.
             </p>
-            <button className="btn btn-primary">Give a Shout!</button>
+            <Link to="/contact">
+              <button className="btn btn-primary">Give a Shout!</button>
+            </Link>
           </div>
           <div className="col-4 img-box d-lg-block d-none">
             <img src={HomeImg4} alt="Are You Living a Life of Fulfillment?" />
