@@ -10,7 +10,7 @@ const Navbar = () => {
   const useDesktop = useIsDesktop();
 
   return (
-    <nav className="navbar navbar-expand-lg fixed-top">
+    <nav className="navbar navbar-expand-xl fixed-top">
       <div className="container">
         <Link className="navbar-brand abs me-5 mb-2" to="/">
           <img
