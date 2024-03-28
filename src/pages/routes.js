@@ -1,5 +1,6 @@
 import Home from "./home.page";
 import About from "./about.page";
+import Contact from "./contact.page";
 
 export const routes = [
   {
@@ -9,5 +10,9 @@ export const routes = [
   {
     path: "/about",
     element: About,
+  },
+  {
+    path: "/contact",
+    element: Contact,
   },
 ];
