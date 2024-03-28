@@ -287,6 +287,14 @@ body {
         width: 660px;
         height: 400px;
       }
+
+      .text-box {
+        background-image: linear-gradient(
+          to left,
+          rgba($primary, 0.1),
+          rgba($light, 0.1)
+        );
+      }
     }
 
     .tab3 {
@@ -487,7 +495,7 @@ footer {
   width: 12px;
   background-color: transparent;
 
-  @media only screen and (max-width: $mobile-res) {
+  @media only screen and (max-width: 992px) {
     display: none;
   }
 }
