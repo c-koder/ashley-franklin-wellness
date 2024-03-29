@@ -43,46 +43,34 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/specialties"
-                data-bs-toggle="collapse"
-              >
+              <Link className="nav-link" to="/specialties">
                 Specialties
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/what-to-expect"
-                data-bs-toggle="collapse"
-              >
+              <Link className="nav-link" to="/what-to-expect">
                 What To Expect
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/contact"
-                data-bs-toggle="collapse"
-              >
+              <Link className="nav-link" to="/contact">
                 Contact
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/faq" data-bs-toggle="collapse">
+              <Link className="nav-link" to="/faq">
                 FAQ
               </Link>
             </li>
           </ul>
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
             <li className="nav-item">
-              <Link to="/contact">
+              <a href="tel:+17744760487">
                 <button className="btn btn-primary">
                   <PhoneIcon />
                   774-476-0487
                 </button>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

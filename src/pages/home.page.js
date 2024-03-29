@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
 import { HomeImg2, HomeImg3, HomeImg4 } from "../utils/images";
 
 const Home = () => {
@@ -26,8 +29,8 @@ const Home = () => {
       </section>
       <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent">
         <h1>Are You Living a Life of Fulfillment?</h1>
-        <div className="row container tab1 mt-lg-5 mt-3">
-          <div className="col-lg-8 text-box">
+        <div className="row container tab1 mt-lg-5 mt-3 justify-content-center">
+          <div className="col-lg-6">
             <p>
               Or, like too many women, do you feel like you’re{" "}
               <span className="quote">&quot;just getting by&quot;?</span> Of
@@ -48,7 +51,10 @@ const Home = () => {
               authenticity and intention.
             </p>
           </div>
-          <div className="col-4 img-box d-lg-block d-none">
+          <div className="col-lg-4 img-box">
+            <button className="btn info-btn">
+              <InformationCircleIcon />
+            </button>
             <img src={HomeImg2} alt="Are You Living a Life of Fulfillment?" />
           </div>
         </div>
