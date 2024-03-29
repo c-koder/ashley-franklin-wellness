@@ -112,7 +112,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-tertiary d-flex mx-auto mt-lg-4 mt-5"
+                className="btn btn-primary d-flex mx-auto mt-lg-4 mt-5"
               >
                 Submit
               </button>

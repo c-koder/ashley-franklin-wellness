@@ -294,71 +294,81 @@ body {
 
     .tab1 {
       .img-box {
-        .info-btn {
+        .text {
           position: absolute;
-          right: 0;
-          top: 10px;
+          left: 0;
+          bottom: 0;
+          padding: 30px;
+          margin: 30px;
+          color: $light;
+          background-image: linear-gradient(
+            to right,
+            rgba($primary, 0.4),
+            rgba($secondary, 0.5)
+          );
+          box-shadow: 0px 4px 80px -10px rgba($secondary, 0.5);
+          border-radius: 9px;
 
-          &:hover {
-            box-shadow: none !important;
-            transform: translateY(-4px);
+          h2 {
+            font-size: 28px;
+            font-weight: 600;
           }
 
-          svg {
-            width: 32px;
-            fill: $light;
-            cursor: pointer;
+          h4 {
+            font-size: 18px;
+            font-family: $font-secondary;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.4;
           }
         }
       }
     }
 
-    .tab2 {
-      .img-box {
-        top: 90px;
-        left: 0;
-        width: 660px;
-        height: 400px;
+    @media screen and (max-width: $mobile-res) {
+      min-height: 50vh !important;
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.1;
       }
 
-      .text-box {
-        background-image: linear-gradient(
-          to left,
-          rgba($primary, 0.1),
-          rgba($light, 0.1)
-        );
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        font-weight: 500;
       }
     }
+  }
 
-    .tab3 {
-      .text-box {
-        position: relative;
-      }
+  .cta {
+    background-image: url(../assets/images/home_img5.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 40px 0;
+    height: 450px;
 
-      .btn {
-        position: absolute;
-        bottom: -30px;
-        right: -30px;
-        padding: 20px;
-        font-size: 20px;
-        width: 200px;
-        box-shadow: 0px 4px 40px -3px rgba($primary, 0.5);
-      }
+    p {
+      font-size: 22px;
+      font-family: $font-secondary;
+      line-height: 1.75;
+      font-weight: 500;
+      color: $light;
+      text-shadow: 0px 1px 20px rgba($dark, 0.75);
+    }
 
-      .img-box {
-        top: 160px;
-        width: 660px;
-        height: 400px;
-      }
+    .btn {
+      padding: 20px;
+      font-size: 22px;
+      width: 200px;
+      box-shadow: 0px 4px 40px -3px rgba($secondary, 0.5) !important;
     }
 
     @media screen and (max-width: $mobile-res) {
-      min-height: 100vh;
-      background-position: center;
-      margin: 0 12px;
+      min-height: 0vh !important;
 
       h1 {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 1.1;
       }
 
@@ -368,24 +378,8 @@ body {
         font-weight: 500;
       }
 
-      .tab1,
-      .tab2,
-      .tab3 {
-        .text-box {
-          padding: 20px 30px;
-        }
-      }
-
-      .tab3 {
-        .btn {
-          position: absolute;
-          bottom: -30px;
-          right: 20px;
-          padding: 12px;
-          font-size: 18px;
-          width: 160px;
-          box-shadow: 0px 4px 40px -3px rgba($primary, 0.5);
-        }
+      .btn {
+        padding: 12px 24px;
       }
     }
   }
@@ -570,8 +564,6 @@ body {
 
 footer {
   padding: 30px 0;
-  margin-top: 60px;
-  // border-radius: 20px 20px 0 0;
   background-image: linear-gradient(
     to left,
     rgba($secondary, 0.2),
