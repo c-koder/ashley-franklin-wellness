@@ -1,9 +1,7 @@
-import { useState } from "react";
-
 import { Link } from "react-router-dom";
 
 const FAQ = () => {
-  const [accordionItems, setAccordionItems] = useState([
+  const accordionItems = [
     {
       id: "faq1",
       question: "Are You Accepting New Clients?",
@@ -47,7 +45,7 @@ const FAQ = () => {
         "<span class='quote'>Please note that I am only offering teletherapy sessions at this time</span><br/><br/>You are welcome to call, email, and text me outside of our sessions for scheduling purposes only. Please know that text and email are not secure forms of communication and your confidentiality cannot be assured with those means.<br/><br/><span>Phone: </span>774-476-0487<br /><span>Email: </span>TBD<br/><br/>Sessions are 50 minutes long and payment is due in full at the time of service. I accept venmo, debit and credit cards (Visa, MasterCard, Discover, American Express), and HSA and FSA cards.<br/><br/>I have a 24-hour cancellation policy, and if you cancel or reschedule your session less than 24 hours in advance you will be charged the full fee for the session. This is non-negotiable, and you will be required to have a credit card on file for any late cancellations.<br/><br/><span>I do not provide crisis services. If you are experiencing an emergency, please call 9-8-8, the 24 hour Suicide & Crisis Lifeline, or go to the nearest emergency room.</span>",
       expanded: false,
     },
-  ]);
+  ];
 
   return (
     <div id="faqPage">
