@@ -1,15 +1,18 @@
-import { AboutImg1, AboutImg2 } from "../utils/images";
+import { Link } from "react-router-dom";
+import { AboutImg1 } from "../utils/images";
 
 const About = () => {
   return (
     <div id="aboutPage">
-      <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center content">
-        <h1>About Ashley Franklin</h1>
+      <div className="title-box">
+        <h1>Who Is Ashley?</h1>
+      </div>
+      <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center mt-5">
         <div className="row container tab1 mt-lg-5 mt-3 position-relative justify-content-center">
-          <div className="img-box">
-            <img src={AboutImg1} alt="Are You Living a Life of Fulfillment?" />
-          </div>
-          <div className="col-lg-9 text-box">
+          <div className="col-lg-11 text-box">
+            <div className="img-box me-lg-5">
+              <img src={AboutImg1} alt="About Ashley" />
+            </div>
             <p>
               Hey there! I’m Ashley. I specialize in therapy for women’s issues.
               I’m a licensed independent clinical social worker—in addition to
@@ -57,21 +60,26 @@ const About = () => {
               will gently encourage you to explore more about yourself, and you
               will have the space and freedom to share as much or as little as
               you’re comfortable with.
-              <br />
-              <br />
+            </p>
+          </div>
+        </div>
+        <div className="d-flex flex-column justify-content-center align-items-center cta mt-4">
+          <div className="container text-center">
+            <p>
               If you think we’d make a good team, give me a call at (774)
               476-0487. We’ll introduce ourselves and discuss each of our
               availabilities. Then, the beauty of a telehealth practice is that
               you’ll be saving yourself the time and expense of a car trip.
               Let’s chat!
             </p>
-            <div className="d-flex gap-4 btn-grouped">
-              <button className="btn btn-tertiary">Lets have a call</button>
-              <button className="btn btn-primary">or Leave a message</button>
+            <div className="d-flex gap-4 justify-content-center mt-lg-4">
+              <a href="tel:+17744760487">
+                <button className="btn btn-tertiary">Lets have a call</button>
+              </a>
+              <Link to="/contact">
+                <button className="btn btn-primary">Or leave a message</button>
+              </Link>
             </div>
-          </div>
-          <div className="img-box2 d-lg-block d-none">
-            <img src={AboutImg2} alt="Are You Living a Life of Fulfillment?" />
           </div>
         </div>
       </section>

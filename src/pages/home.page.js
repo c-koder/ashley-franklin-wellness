@@ -61,9 +61,11 @@ const Home = () => {
                     I support women who are feeling exhausted, stressed, and
                     burnt out.
                   </h4>
-                  <button className="btn btn-primary">
-                    Read more About Me
-                  </button>
+                  <Link to="/about">
+                    <button className="btn btn-primary">
+                      Read more about me
+                    </button>
+                  </Link>
                 </div>
               </Parallax>
               <img src={HomeImg2} alt="Are You Living a Life of Fulfillment?" />
