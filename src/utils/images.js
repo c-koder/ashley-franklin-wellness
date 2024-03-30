@@ -9,7 +9,7 @@ import HomeImg4 from "../assets/images/home_img4.jpg";
 import AboutImg1 from "../assets/images/about_img1.jpg";
 import AboutImg2 from "../assets/images/about_img2.jpg";
 
-// import ContactImg1 from "../assets/images/contact_img1.png";
+import FaqImg2 from "../assets/images/faq_img2.jpg";
 
 export {
   LogoImg,
@@ -19,5 +19,5 @@ export {
   HomeImg4,
   AboutImg1,
   AboutImg2,
-  // ContactImg1,
+  FaqImg2,
 };
