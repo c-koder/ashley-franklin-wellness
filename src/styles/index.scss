@@ -183,6 +183,81 @@ body {
   }
 }
 
+.title-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  h1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 72px;
+    font-weight: 600;
+    text-align: center;
+    color: $light;
+    text-shadow: 0px 6px 18px rgba($primary, 0.75);
+  }
+
+  @media screen and (max-width: $mobile-res) {
+    height: 260px;
+
+    h1 {
+      font-size: 42px;
+      top: 35%;
+      bottom: 0;
+    }
+  }
+}
+
+.cta {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 450px;
+
+  p {
+    font-size: 22px;
+    font-family: $font-secondary;
+    line-height: 1.75;
+    font-weight: 500;
+    color: $light;
+    text-shadow: 0px 1px 20px rgba($dark, 0.75);
+  }
+
+  .btn {
+    padding: 20px;
+    font-size: 22px;
+    width: 200px;
+    box-shadow: 0px 4px 40px -3px rgba($secondary, 0.5) !important;
+  }
+
+  @media screen and (max-width: $mobile-res) {
+    min-height: 0vh !important;
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .btn {
+      padding: 12px 24px;
+    }
+  }
+}
+
 .quote {
   font-family: $font-secondary;
   font-style: italic;
@@ -345,73 +420,11 @@ body {
   }
 }
 
-.cta {
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 450px;
-
-  p {
-    font-size: 22px;
-    font-family: $font-secondary;
-    line-height: 1.75;
-    font-weight: 500;
-    color: $light;
-    text-shadow: 0px 1px 20px rgba($dark, 0.75);
-  }
-
-  .btn {
-    padding: 20px;
-    font-size: 22px;
-    width: 200px;
-    box-shadow: 0px 4px 40px -3px rgba($secondary, 0.5) !important;
-  }
-
-  @media screen and (max-width: $mobile-res) {
-    min-height: 0vh !important;
-
-    h1 {
-      font-size: 28px;
-      line-height: 1.1;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    .btn {
-      padding: 12px 24px;
-    }
-  }
-}
-
 #aboutPage {
   margin-top: 11vh;
 
   .title-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 300px;
     background-image: url(../assets/images/about_img2.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-
-    h1 {
-      position: absolute;
-      left: 0;
-      right: 0;
-      font-size: 72px;
-      font-weight: 600;
-      text-align: center;
-      color: $light;
-      text-shadow: 0px 6px 18px rgba($primary, 0.75);
-    }
   }
 
   .cta {
@@ -471,16 +484,6 @@ body {
   }
 
   @media screen and (max-width: $mobile-res) {
-    .title-box {
-      height: 260px;
-
-      h1 {
-        font-size: 48px;
-        top: 35%;
-        bottom: 0;
-      }
-    }
-
     .text-box {
       padding: 20px 30px;
     }
@@ -488,6 +491,13 @@ body {
     .img-box {
       height: 500px;
       float: none;
+    }
+
+    .title-box {
+      h1 {
+        top: 40%;
+        bottom: 0;
+      }
     }
 
     .btn {
@@ -515,35 +525,7 @@ body {
   margin-top: 11vh;
 
   .title-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 300px;
     background-image: url(../assets/images/contact_img.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba($dark, 0.2);
-    }
-
-    h1 {
-      position: absolute;
-      left: 0;
-      right: 0;
-      font-size: 72px;
-      font-weight: 600;
-      text-align: center;
-      color: $light;
-      text-shadow: 0px 9px 18px rgba($dark, 0.5);
-    }
   }
 
   p {
@@ -566,11 +548,8 @@ body {
     }
 
     .title-box {
-      height: 260px;
-
       h1 {
-        font-size: 48px;
-        top: 50%;
+        top: 45%;
         bottom: 0;
       }
     }
@@ -578,6 +557,102 @@ body {
     .text-box {
       p {
         font-size: 18px;
+      }
+    }
+  }
+}
+
+#faqPage {
+  margin-top: 11vh;
+
+  .title-box {
+    background-image: url(../assets/images/faq_img1.jpg);
+  }
+
+  .cta {
+    background-image: url(../assets/images/faq_img2.jpg);
+  }
+
+  .accordion {
+    .accordion-item {
+      .accordion-button[aria-expanded="true"] {
+        border-bottom: 1px solid $primary !important;
+        color: $primary;
+
+        &::after {
+          background-image: url(../assets/icons/chevron-down-colored.svg);
+        }
+      }
+
+      .accordion-button {
+        position: relative;
+        text-align: left;
+        width: 100%;
+        padding: 32px 0;
+        color: $dark;
+        font-size: 22px;
+        font-weight: 600;
+        box-shadow: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+        }
+
+        &::after {
+          background-image: url(../assets/icons/chevron-down.svg);
+          background-size: 120%;
+        }
+      }
+    }
+
+    .accordion-body {
+      overflow: hidden;
+      font-family: $font-secondary;
+      font-size: 20px;
+      font-weight: 500;
+      color: $secondary;
+      line-height: 1.75;
+      margin: 12px 0;
+
+      span {
+        font-family: $font-secondary;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .btn-tertiary {
+    padding: 12px 24px;
+    width: 300px;
+    border-color: $light;
+    color: $light;
+
+    &:hover {
+      box-shadow: 0px 4px 40px -3px rgba($light, 0.5) !important;
+    }
+  }
+
+  @media screen and (max-width: $mobile-res) {
+    .accordion {
+      padding: 0 20px;
+
+      .accordion-item {
+        .accordion-button {
+          padding: 24px 16px;
+          font-size: 18px;
+
+          &::after {
+            background-size: 100%;
+          }
+        }
+      }
+
+      .accordion-body {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 6px 0;
       }
     }
   }
