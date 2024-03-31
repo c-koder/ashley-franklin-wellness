@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { AboutImg1 } from "../utils/images";
+
+import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+
+import { AboutImg1, PsychologyTodayLogo } from "../utils/images";
 
 const About = () => {
   return (
@@ -11,6 +14,14 @@ const About = () => {
         <div className="container col-lg-9 my-lg-5 my-4 text-box">
           <div className="img-box me-lg-5 mb-4 mb-lg-0">
             <img src={AboutImg1} alt="About Ashley" />
+            <button
+              className="btn btn-tertiary"
+              data-bs-toggle="modal"
+              data-bs-target="#ptsModal"
+            >
+              <InformationCircleIcon />
+              Psychology Today Summary
+            </button>
           </div>
           <p>
             Hey there! I’m Ashley. I specialize in therapy for women’s issues.
@@ -83,6 +94,61 @@ const About = () => {
           </div>
         </div>
       </section>
+      <div
+        className="modal modal-lg fade"
+        id="ptsModal"
+        data-bs-keyboard="true"
+        tabIndex="-1"
+        aria-labelledby="ptsModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-body px-5 py-4">
+              <div className="hstack mt-3 mb-4">
+                <button className="btn close-btn" data-bs-dismiss="modal">
+                  <XMarkIcon />
+                </button>
+                <img src={PsychologyTodayLogo} alt="Psychology Today Logo" />
+              </div>
+              <p>
+                Life is one wild ride, isn’t it? I would like you to remember:
+                you are more than enough—just as you are. I’m here to help you
+                get where you want to be. If you’re struggling with depression,
+                anxiety, negative thoughts, low self-esteem, stress, life
+                transitions, insomnia, weight gain, or a chronic disease or
+                illness, I’m here to listen and assist.
+                <br />
+                <br />I prioritize a holistic approach to mental health. In our
+                sessions, we will be looking at everything that influences your
+                well-being. This includes your mind, along with your lifestyle,
+                moods, and emotions, as each aspect of our lives is deeply
+                interconnected.
+                <br />
+                <br />
+                During our sessions, I like to remind my clients,{" "}
+                <span className="quote">&quot;This is your time.&quot;</span> I
+                will gently encourage you to explore more about yourself, and
+                you will have the space and freedom to share as much or as
+                little as you’re comfortable with.
+                <br />
+                <br />
+                If you’re looking for compassionate women’s telehealth therapy,
+                give me a shout. I’m here to help you navigate this crazy
+                journey we call womanhood, one step at a time.
+              </p>
+              <Link to="/contact" className="d-flex justify-content-center">
+                <button
+                  className="btn btn-secondary my-2 mb-3"
+                  data-bs-dismiss="modal"
+                >
+                  Give a Shout!
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
