@@ -11,6 +11,8 @@ import AboutImg2 from "../assets/images/about_img2.jpg";
 
 import FaqImg2 from "../assets/images/faq_img2.jpg";
 
+import PsychologyTodayLogo from "../assets/images/psychology-today.png";
+
 export {
   LogoImg,
   LogoDarkImg,
@@ -20,4 +22,5 @@ export {
   AboutImg1,
   AboutImg2,
   FaqImg2,
+  PsychologyTodayLogo,
 };
