@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Parallax } from "react-scroll-parallax";
 
-import { HomeImg2, HomeImg3, HomeImg4 } from "../utils/images";
+import { AshleyImg1, AshleyImg3, HomeImg3 } from "../utils/images";
 
 const Home = () => {
   return (
@@ -68,7 +68,10 @@ const Home = () => {
                   </Link>
                 </div>
               </Parallax>
-              <img src={HomeImg2} alt="Are You Living a Life of Fulfillment?" />
+              <img
+                src={AshleyImg3}
+                alt="Are You Living a Life of Fulfillment?"
+              />
             </div>
           </div>
         </section>
@@ -148,7 +151,7 @@ const Home = () => {
               </p>
             </div>
             <div className="col-lg-4 img-box d-lg-block d-none">
-              <img src={HomeImg4} alt="Open Up in a Judgement-Free Space" />
+              <img src={AshleyImg1} alt="Open Up in a Judgement-Free Space" />
             </div>
           </div>
         </section>
