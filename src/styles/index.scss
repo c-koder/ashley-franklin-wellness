@@ -372,12 +372,25 @@ svg {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: top;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba($dark, 0.075);
         }
       }
     }
 
     .tab1 {
       .img-box {
+        img {
+          height: auto;
+        }
+
         .text {
           position: absolute;
           left: 0;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 
-import { AboutImg1, PsychologyTodayLogo } from "../utils/images";
+import { AshleyImg2, PsychologyTodayLogo } from "../utils/images";
 
 const About = () => {
   return (
@@ -13,7 +13,7 @@ const About = () => {
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-lg-9 my-lg-5 my-4 text-box">
           <div className="img-box me-lg-5 mb-4 mb-lg-0">
-            <img src={AboutImg1} alt="About Ashley" />
+            <img src={AshleyImg2} alt="About Ashley" />
             <button
               className="btn btn-tertiary"
               data-bs-toggle="modal"
