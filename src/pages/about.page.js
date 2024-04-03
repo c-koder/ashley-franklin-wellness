@@ -11,7 +11,7 @@ const About = () => {
         <h1>Who Is Ashley?</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-9 my-lg-5 my-4 text-box">
+        <div className="container col-lg-7 my-lg-5 my-4 text-box">
           <div className="img-box me-lg-5 mb-4 mb-lg-0">
             <img src={AshleyImg2} alt="About Ashley" />
             <button

@@ -14,6 +14,8 @@ import AshleyImg1 from "../assets/images/ashley_img1.jpg";
 import AshleyImg2 from "../assets/images/ashley_img2.jpg";
 import AshleyImg3 from "../assets/images/ashley_img3.jpg";
 
+import WhatToExpectImg3 from "../assets/images/wte_img3.jpg";
+
 export {
   LogoImg,
   LogoDarkImg,
@@ -24,4 +26,5 @@ export {
   AshleyImg1,
   AshleyImg2,
   AshleyImg3,
+  WhatToExpectImg3,
 };
