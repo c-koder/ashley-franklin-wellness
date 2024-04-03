@@ -19,8 +19,8 @@ const Contact = () => {
       <div className="title-box">
         <h1>Contact</h1>
       </div>
-      <section className="container d-flex flex-column justify-content-center align-items-center">
-        <div className="col-lg-9 my-lg-5 my-4 text-box">
+      <section className="d-flex flex-column justify-content-center align-items-center">
+        <div className="container col-lg-7 my-lg-5 my-4 text-box">
           <p className="text-center">
             Put the self-help book down! I would love to hear from you. We can
             talk about if we would be a great fit and get started on your

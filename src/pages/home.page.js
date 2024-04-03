@@ -32,7 +32,7 @@ const Home = () => {
         >
           <h1>Are You Living a Life of Fulfillment?</h1>
           <div className="row container tab1 mt-lg-5 mt-3 justify-content-center">
-            <div className="col-lg-7 me-lg-4">
+            <div className="col-lg-6 me-lg-4">
               <p>
                 Or, like too many women, do you feel like you’re{" "}
                 <span className="quote">&quot;just getting by&quot;?</span> Of
@@ -88,7 +88,7 @@ const Home = () => {
                 alt="Take Control of Your Story and Find the Right Support System"
               />
             </div>
-            <div className="ms-lg-4 col-lg-7 text-box">
+            <div className="ms-lg-4 col-lg-6 text-box">
               <p>
                 In today’s world, life for women is more complex than ever
                 before, and women’s issues affect each of us differently. Topics
@@ -119,7 +119,7 @@ const Home = () => {
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
           <h1>Open Up in a Judgement-Free Space</h1>
           <div className="row container tab3 mt-lg-5 mt-3 justify-content-center">
-            <div className="col-lg-7 me-lg-4 text-box">
+            <div className="col-lg-6 me-lg-4 text-box">
               <p>
                 Therapy offers a designated time and place to see and understand
                 each of these facets of our lives. And thankfully, it’s not all
