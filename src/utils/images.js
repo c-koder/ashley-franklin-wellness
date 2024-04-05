@@ -16,6 +16,10 @@ import AshleyImg3 from "../assets/images/ashley_img3.jpg";
 
 import WhatToExpectImg3 from "../assets/images/wte_img3.jpg";
 
+import SpecialtiesImg3 from "../assets/images/specialties_img3.jpg";
+import SpecialtiesImg4 from "../assets/images/specialties_img4.jpg";
+import SpecialtiesImg5 from "../assets/images/specialties_img5.jpg";
+
 export {
   LogoImg,
   LogoDarkImg,
@@ -27,4 +31,7 @@ export {
   AshleyImg2,
   AshleyImg3,
   WhatToExpectImg3,
+  SpecialtiesImg3,
+  SpecialtiesImg4,
+  SpecialtiesImg5,
 };

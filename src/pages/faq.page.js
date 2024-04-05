@@ -90,9 +90,7 @@ const FAQ = () => {
               Let’s chat!
             </p>
             <Link to="/contact">
-              <button className="btn btn-tertiary mt-lg-0 mt-4">
-                Make an Appointment
-              </button>
+              <button className="btn btn-tertiary">Make an Appointment</button>
             </Link>
           </div>
         </div>

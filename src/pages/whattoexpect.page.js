@@ -102,9 +102,7 @@ const WhatToExpect = () => {
               you every step of the way.
             </p>
             <Link to="/contact">
-              <button className="btn btn-primary mt-lg-0 mt-4">
-                Let's get started!
-              </button>
+              <button className="btn btn-primary">Let's get started!</button>
             </Link>
           </div>
         </div>

@@ -81,12 +81,12 @@ const About = () => {
               you’ll be saving yourself the time and expense of a car trip.
               Let’s chat!
             </p>
-            <div className="d-lg-flex gap-4 justify-content-center mt-lg-4">
+            <div className="d-lg-flex gap-4 justify-content-center mt-4">
               <a href="tel:+17744760487">
                 <button className="btn btn-tertiary">Lets have a call</button>
               </a>
               <Link to="/contact">
-                <button className="btn btn-primary mt-lg-0 mt-4">
+                <button className="btn btn-primary mt-lg-0 mt-3">
                   Or leave a message
                 </button>
               </Link>
