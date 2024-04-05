@@ -3,6 +3,7 @@ import About from "./about.page";
 import Contact from "./contact.page";
 import FAQ from "./faq.page";
 import WhatToExpect from "./whattoexpect.page";
+import Specialties from "./specialties.page";
 
 export const routes = [
   {
@@ -24,5 +25,9 @@ export const routes = [
   {
     path: "/what-to-expect",
     element: WhatToExpect,
+  },
+  {
+    path: "/specialties",
+    element: Specialties,
   },
 ];
