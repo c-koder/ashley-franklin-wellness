@@ -1,9 +1,4 @@
 import { Link } from "react-router-dom";
-import {
-  SpecialtiesImg3,
-  SpecialtiesImg4,
-  SpecialtiesImg5,
-} from "../utils/images";
 
 const Services = () => {
   return (
