@@ -4,6 +4,7 @@ import Contact from "./contact.page";
 import FAQ from "./faq.page";
 import WhatToExpect from "./whattoexpect.page";
 import Specialties from "./specialties.page";
+import Services from "./services.page";
 
 export const routes = [
   {
@@ -29,5 +30,9 @@ export const routes = [
   {
     path: "/specialties",
     element: Specialties,
+  },
+  {
+    path: "/services",
+    element: Services,
   },
 ];
