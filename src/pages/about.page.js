@@ -11,8 +11,8 @@ const About = () => {
         <h1>Who Is Ashley?</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-7 my-lg-5 my-4 text-box">
-          <div className="img-box me-lg-5 mb-4 mb-lg-0">
+        <div className="container col-xl-7 my-xl-5 my-4 text-box">
+          <div className="img-box me-xl-5 mb-4 mb-xl-0">
             <img src={AshleyImg2} alt="About Ashley" />
             <button
               className="btn btn-tertiary"
@@ -81,12 +81,12 @@ const About = () => {
               you’ll be saving yourself the time and expense of a car trip.
               Let’s chat!
             </p>
-            <div className="d-lg-flex gap-4 justify-content-center mt-4">
+            <div className="d-xl-flex gap-4 justify-content-center mt-4">
               <a href="tel:+17744760487">
                 <button className="btn btn-tertiary">Lets have a call</button>
               </a>
               <Link to="/contact">
-                <button className="btn btn-primary mt-lg-0 mt-3">
+                <button className="btn btn-primary mt-xl-0 mt-3">
                   Or leave a message
                 </button>
               </Link>

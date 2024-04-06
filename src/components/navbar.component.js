@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/solid";
 
@@ -8,13 +7,15 @@ import { LogoImg, LogoDarkImg } from "../utils/images";
 
 import useIsDesktop from "../hooks/useIsDesktop";
 
+import { routes } from "../pages/routes";
+
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const useDesktop = useIsDesktop();
 
   useEffect(() => {
     let size = window.innerWidth;
-
     let navLinks = document.querySelectorAll(".nav-link");
 
     const updateWindowDimensions = () => {
@@ -48,7 +49,9 @@ const Navbar = () => {
       <div className="container">
         <Link className="navbar-brand abs me-5 mb-2" to="/">
           <img
-            src={useDesktop ? LogoImg : LogoDarkImg}
+            src={
+              useDesktop && location.pathname === "/" ? LogoImg : LogoDarkImg
+            }
             width="200px"
             alt="brand-logo"
           />
@@ -66,45 +69,19 @@ const Navbar = () => {
           id="navBar"
         >
           <ul className="navbar-nav gap-xl-3">
-            <li className="nav-item">
-              <a className="nav-link" href="/" onClick={handleClick}>
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/about" onClick={handleClick}>
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/specialties" onClick={handleClick}>
-                Specialties
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/services" onClick={handleClick}>
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="/what-to-expect"
-                onClick={handleClick}
-              >
-                What To Expect
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contact" onClick={handleClick}>
-                Contact
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/faq" onClick={handleClick}>
-                FAQ
-              </a>
-            </li>
+            {routes.map((route) => (
+              <li className="nav-item" key={route.path}>
+                <a
+                  className={`nav-link ${
+                    location.pathname !== "/" && "link-dark"
+                  }`}
+                  href={route.path}
+                  onClick={handleClick}
+                >
+                  {route.element.name}
+                </a>
+              </li>
+            ))}
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">

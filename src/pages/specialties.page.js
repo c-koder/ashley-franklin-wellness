@@ -12,11 +12,11 @@ const Specialties = () => {
         <h1>Specialties</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-7 my-lg-5 my-4 text-box">
+        <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
             <h4>Anxiety</h4>
             <hr />
-            <div className="img-box img-box1 ms-xl-5 my-4 mb-lg-4">
+            <div className="img-box img-box1 ms-xl-5 my-4 mb-xl-4">
               <img src={SpecialtiesImg3} alt="Anxiety" />
             </div>
             <p className="mt-4">
@@ -63,7 +63,7 @@ const Specialties = () => {
           <div className="my-5">
             <h4>Stress & Burnout</h4>
             <hr />
-            <div className="img-box img-box2 me-lg-5 my-4 mb-lg-4">
+            <div className="img-box img-box2 me-xl-5 my-4 mb-xl-4">
               <img src={SpecialtiesImg4} alt="Stress & Burnout" />
             </div>
             <p className="mt-4">
@@ -102,7 +102,7 @@ const Specialties = () => {
           <div>
             <h4>Health & Wellness</h4>
             <hr />
-            <div className="img-box img-box1 ms-xl-5 my-4 mb-lg-4">
+            <div className="img-box img-box1 ms-xl-5 my-4 mb-xl-4">
               <img src={SpecialtiesImg5} alt="Health & Wellness" />
             </div>
             <p className="mt-4">

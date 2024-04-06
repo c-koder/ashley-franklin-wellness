@@ -7,7 +7,7 @@ const Services = () => {
         <h1>Services</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-7 my-lg-5 my-4 text-box">
+        <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
             <h4>Online Therapy</h4>
             <hr />
@@ -132,12 +132,12 @@ const Services = () => {
               completing your licensure requirements, or achieving a happier,
               healthier you.
             </p>
-            <div className="d-lg-flex gap-4 justify-content-center mt-4">
+            <div className="d-xl-flex gap-4 justify-content-center mt-4">
               <a href="tel:+17744760487" style={{ border: "none" }}>
                 <button className="btn btn-tertiary">Lets have a call</button>
               </a>
               <Link to="/contact" style={{ border: "none" }}>
-                <button className="btn btn-primary mt-lg-0 mt-3">
+                <button className="btn btn-primary mt-xl-0 mt-3">
                   Or book online
                 </button>
               </Link>

@@ -20,18 +20,18 @@ const Contact = () => {
         <h1>Contact</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-7 my-lg-5 my-4 text-box">
+        <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <p className="text-center">
             Put the self-help book down! I would love to hear from you. We can
             talk about if we would be a great fit and get started on your
             journey. I am happy to answer any questions you may have.
           </p>
           <form
-            className="mt-5 pb-2 pb-lg-0"
+            className="mt-5 pb-2 pb-xl-0"
             onKeyPress={(e) => e.preventDefault()}
             onSubmit={handleSubmit}
           >
-            <div className="d-lg-flex gap-4 mb-3">
+            <div className="d-xl-flex gap-4 mb-3">
               <div className="w-100">
                 <label htmlFor="firstNameInput" className="form-label">
                   First Name
@@ -47,7 +47,7 @@ const Contact = () => {
                   }
                 />
               </div>
-              <div className="w-100 mt-lg-0 mt-3">
+              <div className="w-100 mt-xl-0 mt-3">
                 <label htmlFor="lastNameInput" className="form-label">
                   Last Name
                 </label>
@@ -63,7 +63,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <div className="d-lg-flex gap-4 mb-3">
+            <div className="d-xl-flex gap-4 mb-3">
               <div className="w-100">
                 <label htmlFor="emailInput" className="form-label">
                   Email
@@ -77,7 +77,7 @@ const Contact = () => {
                   onChange={(e) => setData({ ...data, email: e.target.value })}
                 />
               </div>
-              <div className="w-100 mt-lg-0 mt-3">
+              <div className="w-100 mt-xl-0 mt-3">
                 <label htmlFor="phoneInput" className="form-label">
                   Phone Number
                 </label>
@@ -107,12 +107,12 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-primary d-flex mx-auto mt-lg-4 mt-5"
+              className="btn btn-primary d-flex mx-auto mt-xl-4 mt-5"
             >
               Submit
             </button>
           </form>
-          <hr className="my-lg-5 my-4" />
+          <hr className="my-xl-5 my-4" />
           <p className="text-center">
             I do not provide crisis services. If you are experiencing an
             emergency, please call 9-8-8, the 24 hour Suicide & Crisis Lifeline,

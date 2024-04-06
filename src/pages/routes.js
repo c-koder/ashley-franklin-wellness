@@ -16,23 +16,23 @@ export const routes = [
     element: About,
   },
   {
-    path: "/contact",
-    element: Contact,
-  },
-  {
-    path: "/faq",
-    element: FAQ,
-  },
-  {
-    path: "/what-to-expect",
-    element: WhatToExpect,
+    path: "/services",
+    element: Services,
   },
   {
     path: "/specialties",
     element: Specialties,
   },
   {
-    path: "/services",
-    element: Services,
+    path: "/what-to-expect",
+    element: WhatToExpect,
+  },
+  {
+    path: "/contact",
+    element: Contact,
+  },
+  {
+    path: "/faq",
+    element: FAQ,
   },
 ];

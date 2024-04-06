@@ -7,7 +7,7 @@ const WhatToExpect = () => {
         <h1>What to Expect</h1>
       </div>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container col-lg-7 my-lg-5 my-4 text-box">
+        <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <p>
             Feeling a bit jittery about diving into therapy? Totally normal. I
             mean, you're about to spill your guts to someone you barely know!
