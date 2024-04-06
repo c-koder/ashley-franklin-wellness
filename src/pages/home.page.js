@@ -31,8 +31,8 @@ const Home = () => {
           style={{ minHeight: "80vh" }}
         >
           <h1>Are You Living a Life of Fulfillment?</h1>
-          <div className="row container tab1 mt-lg-5 mt-3 justify-content-center">
-            <div className="col-lg-6 me-lg-4">
+          <div className="row container tab1 mt-xl-5 mt-3 justify-content-center">
+            <div className="col-xl-6 me-xl-4">
               <p>
                 Or, like too many women, do you feel like you’re{" "}
                 <span className="quote">&quot;just getting by&quot;?</span> Of
@@ -53,7 +53,7 @@ const Home = () => {
                 authenticity and intention.
               </p>
             </div>
-            <div className="col-lg-4 img-box mt-4 mt-lg-0">
+            <div className="col-xl-4 img-box mt-4 mt-xl-0">
               <Parallax speed={2} translateY={["600px", "400px"]}>
                 <div className="text">
                   <h2>Hi, I am Ashley!</h2>
@@ -81,14 +81,14 @@ const Home = () => {
             <br />
             and Find the Right Support System
           </h1>
-          <div className="row container tab2 mt-lg-5 mt-3 justify-content-center">
-            <div className="col-lg-4 img-box d-lg-block d-none">
+          <div className="row container tab2 mt-xl-5 mt-3 justify-content-center">
+            <div className="col-xl-4 img-box d-xl-block d-none">
               <img
                 src={HomeImg3}
                 alt="Take Control of Your Story and Find the Right Support System"
               />
             </div>
-            <div className="ms-lg-4 col-lg-6 text-box">
+            <div className="ms-xl-4 col-xl-6 text-box">
               <p>
                 In today’s world, life for women is more complex than ever
                 before, and women’s issues affect each of us differently. Topics
@@ -118,8 +118,8 @@ const Home = () => {
         </section>
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
           <h1>Open Up in a Judgement-Free Space</h1>
-          <div className="row container tab3 mt-lg-5 mt-3 justify-content-center">
-            <div className="col-lg-6 me-lg-4 text-box">
+          <div className="row container tab3 mt-xl-5 mt-3 justify-content-center">
+            <div className="col-xl-6 me-xl-4 text-box">
               <p>
                 Therapy offers a designated time and place to see and understand
                 each of these facets of our lives. And thankfully, it’s not all
@@ -150,7 +150,7 @@ const Home = () => {
                 of self-empowerment!
               </p>
             </div>
-            <div className="col-lg-4 img-box d-lg-block d-none">
+            <div className="col-xl-4 img-box d-xl-block d-none">
               <img src={AshleyImg1} alt="Open Up in a Judgement-Free Space" />
             </div>
           </div>

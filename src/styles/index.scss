@@ -144,6 +144,11 @@ svg {
       @include transition;
       color: $light;
 
+      &.link-dark {
+        color: $dark !important;
+        margin: 0;
+      }
+
       @media screen and (max-width: 1200px) {
         color: $dark;
       }
@@ -264,6 +269,7 @@ svg {
 
   @media screen and (max-width: $mobile-res) {
     min-height: 0vh !important;
+    padding: 20px;
 
     h1 {
       font-size: 28px;
@@ -271,13 +277,16 @@ svg {
     }
 
     p {
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 500;
+      font-size: 18px !important;
+      line-height: 1.6 !important;
+      font-weight: 500 !important;
     }
 
     .btn {
-      padding: 12px 24px;
+      display: block;
+      margin: auto;
+      font-size: 18px;
+      width: 200px;
     }
   }
 }
@@ -599,27 +608,6 @@ svg {
         bottom: 0;
       }
     }
-
-    .btn {
-      padding: 12px 18px;
-      font-size: 18px;
-    }
-
-    .cta {
-      padding: 20px;
-
-      p {
-        font-size: 18px;
-        line-height: 1.6;
-        font-weight: 500;
-      }
-
-      .btn {
-        display: block;
-        margin: auto;
-        width: 200px;
-      }
-    }
   }
 }
 
@@ -726,8 +714,8 @@ svg {
   }
 
   .btn-tertiary {
-    padding: 12px 24px;
-    width: 300px;
+    padding: 12px 18px;
+    width: fit-content;
     border-color: $light;
     color: $light;
 
@@ -869,16 +857,6 @@ svg {
       padding: 12px 18px;
       font-size: 18px;
     }
-
-    .cta {
-      padding: 20px;
-
-      p {
-        font-size: 18px;
-        line-height: 1.6;
-        font-weight: 500;
-      }
-    }
   }
 }
 
@@ -1002,16 +980,6 @@ svg {
     .btn {
       padding: 12px 18px;
       font-size: 18px;
-    }
-
-    .cta {
-      padding: 20px;
-
-      p {
-        font-size: 18px;
-        line-height: 1.6;
-        font-weight: 500;
-      }
     }
   }
 }
@@ -1137,22 +1105,6 @@ svg {
     .btn {
       padding: 12px 18px;
       font-size: 18px;
-    }
-
-    .cta {
-      padding: 20px;
-
-      p {
-        font-size: 18px;
-        line-height: 1.6;
-        font-weight: 500;
-      }
-
-      .btn {
-        display: block;
-        margin: auto;
-        width: 200px;
-      }
     }
   }
 }

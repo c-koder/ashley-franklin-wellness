@@ -56,7 +56,7 @@ const FAQ = () => {
         className="d-flex flex-column justify-content-center align-items-center"
         style={{ minHeight: "75vh" }}
       >
-        <div className="container col-lg-7 my-lg-5 my-4">
+        <div className="container col-xl-7 my-xl-5 my-4">
           <div className="accordion accordion-flush">
             {accordionItems.map((item) => (
               <div key={item.id} className="accordion-item">
