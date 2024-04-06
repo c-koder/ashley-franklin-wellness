@@ -78,7 +78,7 @@ const Navbar = () => {
                   href={route.path}
                   onClick={handleClick}
                 >
-                  {route.element.name}
+                  {route.name}
                 </a>
               </li>
             ))}
