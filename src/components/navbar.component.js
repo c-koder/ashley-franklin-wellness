@@ -1,5 +1,8 @@
 import { useEffect } from "react";
+
 import { Link, useNavigate, useLocation } from "react-router-dom";
+
+import { motion } from "framer-motion";
 
 import { Bars3Icon, PhoneIcon } from "@heroicons/react/24/solid";
 
@@ -45,10 +48,26 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-xl fixed-top">
+    <motion.nav
+      initial={{ opacity: 0.5 }}
+      whileInView={{
+        opacity: 1,
+      }}
+      viewport={{ once: true }}
+      className="navbar navbar-expand-xl fixed-top"
+    >
       <div className="container">
         <Link className="navbar-brand abs me-5 mb-2" to="/">
-          <img
+          <motion.img
+            initial={{ opacity: 0, y: -3 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: 0.1,
+              },
+            }}
+            viewport={{ once: true }}
             src={
               useDesktop && location.pathname === "/" ? LogoImg : LogoDarkImg
             }
@@ -69,8 +88,20 @@ const Navbar = () => {
           id="navBar"
         >
           <ul className="navbar-nav gap-xl-3">
-            {routes.map((route) => (
-              <li className="nav-item" key={route.path}>
+            {routes.map((route, index) => (
+              <motion.li
+                initial={{ opacity: 0, y: -6 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.1 * index + 0.5,
+                  },
+                }}
+                viewport={{ once: true }}
+                className="nav-item"
+                key={route.path}
+              >
                 <a
                   className={`nav-link ${
                     location.pathname !== "/" && "link-dark"
@@ -80,22 +111,33 @@ const Navbar = () => {
                 >
                   {route.name}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+            <motion.li
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 1.2,
+                },
+              }}
+              viewport={{ once: true }}
+              className="nav-item"
+            >
               <a href="tel:+17744760487">
                 <button className="btn btn-primary">
                   <PhoneIcon />
                   774-476-0487
                 </button>
               </a>
-            </li>
+            </motion.li>
           </ul>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

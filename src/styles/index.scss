@@ -441,6 +441,14 @@ svg {
     @media screen and (max-width: $mobile-res) {
       min-height: 50vh !important;
 
+      .tab1,
+      .tab2,
+      .tab3 {
+        .img-box {
+          width: 98%;
+        }
+      }
+
       h1 {
         font-size: 28px;
         line-height: 1.1;
@@ -454,6 +462,13 @@ svg {
 
   .cta {
     background-image: url(../assets/images/home_img5.jpg);
+
+    .btn {
+      padding: 12px 18px !important;
+      background-color: $light;
+      color: $primary;
+      width: fit-content;
+    }
   }
 }
 

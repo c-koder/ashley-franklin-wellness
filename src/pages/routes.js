@@ -29,7 +29,7 @@ export const routes = [
   },
   {
     path: "/what-to-expect",
-    name: "WhatToExpect",
+    name: "What To Expect",
     element: WhatToExpect,
   },
   {

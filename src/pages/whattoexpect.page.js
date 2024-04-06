@@ -1,11 +1,33 @@
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 const WhatToExpect = () => {
   return (
     <div id="whatToExpectPage">
-      <div className="title-box">
-        <h1>What to Expect</h1>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        className="title-box"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 0.3,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          What to Expect
+        </motion.h1>
+      </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <p>
@@ -95,15 +117,37 @@ const WhatToExpect = () => {
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="container text-center">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              }}
+              viewport={{ once: true }}
+            >
               So, ready to kick off this journey together?
               <br />
               Your story matters, your feelings are valid, and I'm here to help
               you every step of the way.
-            </p>
-            <Link to="/contact">
-              <button className="btn btn-primary">Let's get started!</button>
-            </Link>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              viewport={{ once: true }}
+            >
+              <Link to="/contact">
+                <button className="btn btn-primary">Let's get started!</button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -1,26 +1,71 @@
+import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
+import { gsap } from "gsap";
+
+import { motion } from "framer-motion";
+
+import { useInView } from "react-intersection-observer";
 
 import { Parallax } from "react-scroll-parallax";
 
 import { AshleyImg1, AshleyImg3, HomeImg3 } from "../utils/images";
 
 const Home = () => {
+  const [animated, setAnimated] = useState(false);
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView && !animated) {
+      let tl = gsap.timeline();
+
+      tl.from("#home-landing-h1 span", {
+        stagger: 0.1,
+        opacity: 0,
+        y: -6,
+        delay: 0.3,
+      });
+
+      tl.from("#home-landing-h5", {
+        opacity: 0,
+        delay: 0.1,
+        y: -4,
+      });
+
+      tl.from("#home-landing-btn1", {
+        opacity: 0,
+        delay: 0.1,
+        y: -2,
+      });
+
+      tl.from("#home-s1-h1", {
+        opacity: 0,
+        delay: 0.1,
+        y: -2,
+      });
+
+      setAnimated(!animated);
+    }
+    // eslint-disable-next-line
+  }, [inView]);
+
   return (
-    <div id="homePage">
+    <div ref={ref} id="homePage">
       <section
         id="landingSection"
         className="d-flex flex-column justify-content-center align-items-center text-center"
       >
         <div className="container">
-          <h1>
-            Your Time
+          <h1 id="home-landing-h1">
+            <span>Your</span> <span>Time</span>
             <br />
-            to Thrive
+            <span>to</span> <span>Thrive</span>
           </h1>
-          <h5>
+          <h5 id="home-landing-h5">
             Quiet your negative thoughts and awaken a supportive inner voice.
           </h5>
-          <Link to="/contact">
+          <Link to="/contact" id="home-landing-btn1">
             <button className="btn btn-primary">Make an Appointment</button>
           </Link>
         </div>
@@ -32,7 +77,7 @@ const Home = () => {
         >
           <h1>Are You Living a Life of Fulfillment?</h1>
           <div className="row container tab1 mt-xl-5 mt-3 justify-content-center">
-            <div className="col-xl-6 me-xl-4">
+            <div className="col-xl-6 order-lg-0 order-1 me-xl-4">
               <p>
                 Or, like too many women, do you feel like you’re{" "}
                 <span className="quote">&quot;just getting by&quot;?</span> Of
@@ -53,7 +98,19 @@ const Home = () => {
                 authenticity and intention.
               </p>
             </div>
-            <div className="col-xl-4 img-box mt-4 mt-xl-0">
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="col-xl-4 order-lg-1 order-0 img-box mb-4 mb-xl-0"
+            >
               <Parallax speed={2} translateY={["600px", "400px"]}>
                 <div className="text">
                   <h2>Hi, I am Ashley!</h2>
@@ -72,7 +129,7 @@ const Home = () => {
                 src={AshleyImg3}
                 alt="Are You Living a Life of Fulfillment?"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
@@ -82,12 +139,24 @@ const Home = () => {
             and Find the Right Support System
           </h1>
           <div className="row container tab2 mt-xl-5 mt-3 justify-content-center">
-            <div className="col-xl-4 img-box d-xl-block d-none">
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="col-xl-4 img-box mb-4 mb-xl-0"
+            >
               <img
                 src={HomeImg3}
                 alt="Take Control of Your Story and Find the Right Support System"
               />
-            </div>
+            </motion.div>
             <div className="ms-xl-4 col-xl-6 text-box">
               <p>
                 In today’s world, life for women is more complex than ever
@@ -119,7 +188,7 @@ const Home = () => {
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
           <h1>Open Up in a Judgement-Free Space</h1>
           <div className="row container tab3 mt-xl-5 mt-3 justify-content-center">
-            <div className="col-xl-6 me-xl-4 text-box">
+            <div className="col-xl-6 order-lg-0 order-1 me-xl-4 text-box">
               <p>
                 Therapy offers a designated time and place to see and understand
                 each of these facets of our lives. And thankfully, it’s not all
@@ -150,23 +219,57 @@ const Home = () => {
                 of self-empowerment!
               </p>
             </div>
-            <div className="col-xl-4 img-box d-xl-block d-none">
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="col-xl-4 order-lg-1 order-0 img-box mb-4 mb-xl-0"
+            >
               <img src={AshleyImg1} alt="Open Up in a Judgement-Free Space" />
-            </div>
+            </motion.div>
           </div>
         </section>
         <section className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="row container text-center">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              }}
+              viewport={{ once: true }}
+            >
               Locating this personal power is what makes therapy one of the
               greatest tools for realizing the life you’ve envisioned for
               yourself. If you’re looking for compassionate women’s telehealth
               therapy, give me a shout. I’m here to listen and help you navigate
               this crazy journey we call womanhood, one step at a time.
-            </p>
-            <Link to="/contact">
-              <button className="btn btn-primary mt-3">Give a Shout!</button>
-            </Link>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              viewport={{ once: true }}
+            >
+              <Link to="/contact">
+                <button className="btn btn-primary">Give a Shout!</button>
+              </Link>
+            </motion.div>
           </div>
         </section>
       </div>

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 
 import { AshleyImg2, PsychologyTodayLogo } from "../utils/images";
@@ -7,12 +9,44 @@ import { AshleyImg2, PsychologyTodayLogo } from "../utils/images";
 const About = () => {
   return (
     <div id="aboutPage">
-      <div className="title-box">
-        <h1>Who Is Ashley?</h1>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        className="title-box"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 0.3,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          Who Is Ashley?
+        </motion.h1>
+      </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
-          <div className="img-box me-xl-5 mb-4 mb-xl-0">
+          <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              transition: {
+                duration: 1,
+                delay: 0.1,
+              },
+            }}
+            viewport={{ once: true }}
+            className="img-box me-xl-5 mb-4 mb-xl-0"
+          >
             <img src={AshleyImg2} alt="About Ashley" />
             <button
               className="btn btn-tertiary"
@@ -22,7 +56,7 @@ const About = () => {
               <InformationCircleIcon />
               Psychology Today Summary
             </button>
-          </div>
+          </motion.div>
           <p>
             Hey there! I’m Ashley. I specialize in therapy for women’s issues.
             I’m a licensed independent clinical social worker—in addition to
@@ -74,22 +108,53 @@ const About = () => {
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="container text-center">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              }}
+              viewport={{ once: true }}
+            >
               If you think we’d make a good team, give me a call at (774)
               476-0487. We’ll introduce ourselves and discuss each of our
               availabilities. Then, the beauty of a telehealth practice is that
               you’ll be saving yourself the time and expense of a car trip.
               Let’s chat!
-            </p>
+            </motion.p>
             <div className="d-xl-flex gap-4 justify-content-center mt-4">
-              <a href="tel:+17744760487">
+              <motion.a
+                initial={{ opacity: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: {
+                    delay: 0.5,
+                  },
+                }}
+                viewport={{ once: true }}
+                href="tel:+17744760487"
+              >
                 <button className="btn btn-tertiary">Lets have a call</button>
-              </a>
-              <Link to="/contact">
-                <button className="btn btn-primary mt-xl-0 mt-3">
-                  Or leave a message
-                </button>
-              </Link>
+              </motion.a>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: {
+                    delay: 0.6,
+                  },
+                }}
+                viewport={{ once: true }}
+              >
+                <Link to="/contact">
+                  <button className="btn btn-primary mt-xl-0 mt-3">
+                    Or leave a message
+                  </button>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>

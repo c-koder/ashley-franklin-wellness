@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+import { motion } from "framer-motion";
+
 import {
   SpecialtiesImg3,
   SpecialtiesImg4,
@@ -8,17 +11,49 @@ import {
 const Specialties = () => {
   return (
     <div id="specialtiesPage">
-      <div className="title-box">
-        <h1>Specialties</h1>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        className="title-box"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 0.3,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          Specialties
+        </motion.h1>
+      </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
             <h4>Anxiety</h4>
             <hr />
-            <div className="img-box img-box1 ms-xl-5 my-4 mb-xl-4">
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
+            >
               <img src={SpecialtiesImg3} alt="Anxiety" />
-            </div>
+            </motion.div>
             <p className="mt-4">
               Anxiety feels like worry cranked up to the max.
               <br />
@@ -63,9 +98,21 @@ const Specialties = () => {
           <div className="my-5">
             <h4>Stress & Burnout</h4>
             <hr />
-            <div className="img-box img-box2 me-xl-5 my-4 mb-xl-4">
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="img-box img-box2 me-xl-5 my-4 mb-xl-4"
+            >
               <img src={SpecialtiesImg4} alt="Stress & Burnout" />
-            </div>
+            </motion.div>
             <p className="mt-4">
               Stress is a daily reality, but when it becomes too much, it leaves
               you utterly exhausted.
@@ -102,9 +149,21 @@ const Specialties = () => {
           <div>
             <h4>Health & Wellness</h4>
             <hr />
-            <div className="img-box img-box1 ms-xl-5 my-4 mb-xl-4">
+            <motion.div
+              initial={{ opacity: 0, x: 12 }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1,
+                  delay: 0.1,
+                },
+              }}
+              viewport={{ once: true }}
+              className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
+            >
               <img src={SpecialtiesImg5} alt="Health & Wellness" />
-            </div>
+            </motion.div>
             <p className="mt-4">
               Let’s talk about health and wellness.{" "}
               <span className="quote">
@@ -165,15 +224,37 @@ const Specialties = () => {
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="container text-center">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              }}
+              viewport={{ once: true }}
+            >
               Because let’s face it, your journey to wellness is yours alone,
               <br />
               and it’s about time you had someone in your corner to support you
               through it all.
-            </p>
-            <Link to="/contact">
-              <button className="btn btn-primary">Give a shout!</button>
-            </Link>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              viewport={{ once: true }}
+            >
+              <Link to="/contact">
+                <button className="btn btn-primary">Give a shout!</button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
