@@ -1,11 +1,33 @@
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 const Services = () => {
   return (
     <div id="servicesPage">
-      <div className="title-box">
-        <h1>Services</h1>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        className="title-box"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 0.3,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          Services
+        </motion.h1>
+      </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
@@ -125,22 +147,54 @@ const Services = () => {
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="container text-center">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              }}
+            >
               Contact us today to schedule a free 15-minute consultation and
               take the first step towards addressing your organization's needs,
               <br />
               completing your licensure requirements, or achieving a happier,
               healthier you.
-            </p>
+            </motion.p>
             <div className="d-xl-flex gap-4 justify-content-center mt-4">
-              <a href="tel:+17744760487" style={{ border: "none" }}>
+              <motion.a
+                initial={{ opacity: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: {
+                    delay: 0.5,
+                  },
+                }}
+                viewport={{ once: true }}
+                href="tel:+17744760487"
+                style={{ border: "none" }}
+              >
                 <button className="btn btn-tertiary">Lets have a call</button>
-              </a>
-              <Link to="/contact" style={{ border: "none" }}>
-                <button className="btn btn-primary mt-xl-0 mt-3">
-                  Or book online
-                </button>
-              </Link>
+              </motion.a>
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.5,
+                  },
+                }}
+                viewport={{ once: true }}
+              >
+                <Link to="/contact" style={{ border: "none" }}>
+                  <button className="btn btn-primary mt-xl-0 mt-3">
+                    Or book online
+                  </button>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>

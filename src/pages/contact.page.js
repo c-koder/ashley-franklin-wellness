@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { motion } from "framer-motion";
+
 const Contact = () => {
   const [data, setData] = useState({
     firstName: "",
@@ -16,9 +18,29 @@ const Contact = () => {
 
   return (
     <div id="contactPage">
-      <div className="title-box">
-        <h1>Contact</h1>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        className="title-box"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 0.3,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          Contact
+        </motion.h1>
+      </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <p className="text-center">

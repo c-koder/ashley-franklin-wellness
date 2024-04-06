@@ -15,7 +15,7 @@ const Main = () => {
   }, [location]);
 
   return (
-    <>
+    <div>
       <Navbar />
       <Routes>
         {routes.map((route, index) => (
@@ -24,7 +24,7 @@ const Main = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 };
 
