@@ -23,6 +23,11 @@ const Contact = () => {
         whileInView={{
           opacity: 1,
           y: 0,
+          transition: {
+            y: { type: "spring", stiffness: 100 },
+            duration: 0.8,
+            delay: 0.1,
+          },
         }}
         viewport={{ once: true }}
         className="title-box"
@@ -33,6 +38,7 @@ const Contact = () => {
             opacity: 1,
             y: 0,
             transition: {
+              duration: 0.45,
               delay: 0.3,
             },
           }}

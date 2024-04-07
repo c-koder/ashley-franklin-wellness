@@ -8,6 +8,8 @@ import {
   SpecialtiesImg5,
 } from "../utils/images";
 
+import { AsyncImage } from "../components/image.component";
+
 const Specialties = () => {
   return (
     <div id="specialtiesPage">
@@ -16,6 +18,11 @@ const Specialties = () => {
         whileInView={{
           opacity: 1,
           y: 0,
+          transition: {
+            y: { type: "spring", stiffness: 100 },
+            duration: 0.8,
+            delay: 0.1,
+          },
         }}
         viewport={{ once: true }}
         className="title-box"
@@ -26,6 +33,7 @@ const Specialties = () => {
             opacity: 1,
             y: 0,
             transition: {
+              duration: 0.45,
               delay: 0.3,
             },
           }}
@@ -52,7 +60,7 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
             >
-              <img src={SpecialtiesImg3} alt="Anxiety" />
+              <AsyncImage src={SpecialtiesImg3} alt="Anxiety" />
             </motion.div>
             <p className="mt-4">
               Anxiety feels like worry cranked up to the max.
@@ -111,7 +119,7 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box2 me-xl-5 my-4 mb-xl-4"
             >
-              <img src={SpecialtiesImg4} alt="Stress & Burnout" />
+              <AsyncImage src={SpecialtiesImg4} alt="Stress & Burnout" />
             </motion.div>
             <p className="mt-4">
               Stress is a daily reality, but when it becomes too much, it leaves
@@ -162,7 +170,7 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
             >
-              <img src={SpecialtiesImg5} alt="Health & Wellness" />
+              <AsyncImage src={SpecialtiesImg5} alt="Health & Wellness" />
             </motion.div>
             <p className="mt-4">
               Let’s talk about health and wellness.{" "}
@@ -230,7 +238,8 @@ const Specialties = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: 0.3,
+                  duration: 0.5,
+                  delay: 0.4,
                 },
               }}
               viewport={{ once: true }}
@@ -246,7 +255,8 @@ const Specialties = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: 0.5,
+                  duration: 0.3,
+                  delay: 0.6,
                 },
               }}
               viewport={{ once: true }}
