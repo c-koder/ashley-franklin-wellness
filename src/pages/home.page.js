@@ -12,6 +12,8 @@ import { Parallax } from "react-scroll-parallax";
 
 import { AshleyImg1, AshleyImg3, HomeImg3 } from "../utils/images";
 
+import { AsyncImage } from "../components/image.component";
+
 const Home = () => {
   const [animated, setAnimated] = useState(false);
   const [ref, inView] = useInView();
@@ -125,7 +127,7 @@ const Home = () => {
                   </Link>
                 </div>
               </Parallax>
-              <img
+              <AsyncImage
                 src={AshleyImg3}
                 alt="Are You Living a Life of Fulfillment?"
               />
@@ -152,7 +154,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="col-xl-4 img-box mb-4 mb-xl-0"
             >
-              <img
+              <AsyncImage
                 src={HomeImg3}
                 alt="Take Control of Your Story and Find the Right Support System"
               />
@@ -232,7 +234,10 @@ const Home = () => {
               viewport={{ once: true }}
               className="col-xl-4 order-lg-1 order-0 img-box mb-4 mb-xl-0"
             >
-              <img src={AshleyImg1} alt="Open Up in a Judgement-Free Space" />
+              <AsyncImage
+                src={AshleyImg1}
+                alt="Open Up in a Judgement-Free Space"
+              />
             </motion.div>
           </div>
         </section>

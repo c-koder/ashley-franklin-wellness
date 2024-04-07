@@ -56,6 +56,11 @@ const FAQ = () => {
         whileInView={{
           opacity: 1,
           y: 0,
+          transition: {
+            y: { type: "spring", stiffness: 100 },
+            duration: 0.8,
+            delay: 0.1,
+          },
         }}
         viewport={{ once: true }}
         className="title-box"
@@ -66,6 +71,7 @@ const FAQ = () => {
             opacity: 1,
             y: 0,
             transition: {
+              duration: 0.45,
               delay: 0.3,
             },
           }}
@@ -87,6 +93,7 @@ const FAQ = () => {
                   opacity: 1,
                   y: 0,
                   transition: {
+                    duration: 0.2,
                     delay: 0.1 * index + 0.5,
                   },
                 }}
@@ -122,7 +129,8 @@ const FAQ = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: 0.3,
+                  duration: 0.5,
+                  delay: 0.4,
                 },
               }}
               viewport={{ once: true }}
@@ -139,7 +147,8 @@ const FAQ = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: 0.5,
+                  duration: 0.3,
+                  delay: 0.6,
                 },
               }}
               viewport={{ once: true }}

@@ -52,6 +52,11 @@ const Navbar = () => {
       initial={{ opacity: 0.5 }}
       whileInView={{
         opacity: 1,
+        transition: {
+          opacity: { type: "spring", stiffness: 100 },
+          duration: 0.8,
+          delay: 0.1,
+        },
       }}
       viewport={{ once: true }}
       className="navbar navbar-expand-xl fixed-top"
@@ -64,6 +69,9 @@ const Navbar = () => {
               opacity: 1,
               y: 0,
               transition: {
+                opacity: { type: "spring", stiffness: 100 },
+                y: { type: "spring", stiffness: 100 },
+                duration: 0.8,
                 delay: 0.1,
               },
             }}
@@ -90,11 +98,12 @@ const Navbar = () => {
           <ul className="navbar-nav gap-xl-3">
             {routes.map((route, index) => (
               <motion.li
-                initial={{ opacity: 0, y: -6 }}
+                initial={{ opacity: 0, y: -2 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
                   transition: {
+                    duration: 0.2,
                     delay: 0.1 * index + 0.5,
                   },
                 }}
@@ -116,11 +125,11 @@ const Navbar = () => {
           </ul>
           <ul className="navbar-nav ms-auto">
             <motion.li
-              initial={{ opacity: 0, y: -6 }}
+              initial={{ opacity: 0 }}
               whileInView={{
                 opacity: 1,
-                y: 0,
                 transition: {
+                  duration: 0.3,
                   delay: 1.2,
                 },
               }}

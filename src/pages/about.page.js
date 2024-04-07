@@ -6,6 +6,8 @@ import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 
 import { AshleyImg2, PsychologyTodayLogo } from "../utils/images";
 
+import { AsyncImage } from "../components/image.component";
+
 const About = () => {
   return (
     <div id="aboutPage">
@@ -14,6 +16,11 @@ const About = () => {
         whileInView={{
           opacity: 1,
           y: 0,
+          transition: {
+            y: { type: "spring", stiffness: 100 },
+            duration: 0.8,
+            delay: 0.1,
+          },
         }}
         viewport={{ once: true }}
         className="title-box"
@@ -24,12 +31,13 @@ const About = () => {
             opacity: 1,
             y: 0,
             transition: {
+              duration: 0.45,
               delay: 0.3,
             },
           }}
           viewport={{ once: true }}
         >
-          Who Is Ashley?
+          Who is Ashley?
         </motion.h1>
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
@@ -40,14 +48,14 @@ const About = () => {
               opacity: 1,
               x: 0,
               transition: {
-                duration: 1,
+                duration: 0.8,
                 delay: 0.1,
               },
             }}
             viewport={{ once: true }}
             className="img-box me-xl-5 mb-4 mb-xl-0"
           >
-            <img src={AshleyImg2} alt="About Ashley" />
+            <AsyncImage src={AshleyImg2} alt="About Ashley" />
             <button
               className="btn btn-tertiary"
               data-bs-toggle="modal"
@@ -114,6 +122,7 @@ const About = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
+                  duration: 0.4,
                   delay: 0.3,
                 },
               }}
@@ -131,7 +140,8 @@ const About = () => {
                 whileInView={{
                   opacity: 1,
                   transition: {
-                    delay: 0.5,
+                    duration: 0.5,
+                    delay: 0.6,
                   },
                 }}
                 viewport={{ once: true }}
@@ -144,7 +154,8 @@ const About = () => {
                 whileInView={{
                   opacity: 1,
                   transition: {
-                    delay: 0.6,
+                    duration: 0.5,
+                    delay: 0.7,
                   },
                 }}
                 viewport={{ once: true }}
@@ -174,7 +185,10 @@ const About = () => {
                 <button className="btn close-btn" data-bs-dismiss="modal">
                   <XMarkIcon />
                 </button>
-                <img src={PsychologyTodayLogo} alt="Psychology Today Logo" />
+                <AsyncImage
+                  src={PsychologyTodayLogo}
+                  alt="Psychology Today Logo"
+                />
               </div>
               <p>
                 Life is one wild ride, isn’t it? I would like you to remember:

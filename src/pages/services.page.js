@@ -10,6 +10,11 @@ const Services = () => {
         whileInView={{
           opacity: 1,
           y: 0,
+          transition: {
+            y: { type: "spring", stiffness: 100 },
+            duration: 0.8,
+            delay: 0.1,
+          },
         }}
         viewport={{ once: true }}
         className="title-box"
@@ -20,6 +25,7 @@ const Services = () => {
             opacity: 1,
             y: 0,
             transition: {
+              duration: 0.45,
               delay: 0.3,
             },
           }}
@@ -35,8 +41,8 @@ const Services = () => {
             <hr />
             <p className="mt-4">
               <span className="quote">
-                &quot;"Sometimes the bravest and most important thing you can do
-                is just show up. &quot; - Brené Brown
+                &quot;Sometimes the bravest and most important thing you can do
+                is just show up.&quot; - Brené Brown
               </span>
               <br />
               <br />
@@ -153,6 +159,7 @@ const Services = () => {
                 opacity: 1,
                 y: 0,
                 transition: {
+                  duration: 0.4,
                   delay: 0.3,
                 },
               }}
@@ -169,7 +176,8 @@ const Services = () => {
                 whileInView={{
                   opacity: 1,
                   transition: {
-                    delay: 0.5,
+                    duration: 0.5,
+                    delay: 0.6,
                   },
                 }}
                 viewport={{ once: true }}
@@ -179,12 +187,12 @@ const Services = () => {
                 <button className="btn btn-tertiary">Lets have a call</button>
               </motion.a>
               <motion.div
-                initial={{ opacity: 0, y: -6 }}
+                initial={{ opacity: 0 }}
                 whileInView={{
                   opacity: 1,
-                  y: 0,
                   transition: {
-                    delay: 0.5,
+                    duration: 0.6,
+                    delay: 0.7,
                   },
                 }}
                 viewport={{ once: true }}
