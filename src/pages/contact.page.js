@@ -149,7 +149,10 @@ const Contact = () => {
           <p className="text-center mt-3">
             <span>Phone: </span>774-476-0487
             <br />
-            <span>Email: </span>TBD
+            <span>Email: </span>
+            <a href="mailto:ashleyfranklinwellness@gmail.com">
+              ashleyfranklinwellness@gmail.com
+            </a>
           </p>
         </div>
       </section>

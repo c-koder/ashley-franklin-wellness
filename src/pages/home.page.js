@@ -60,7 +60,7 @@ const Home = () => {
       >
         <div className="container">
           <h1 id="home-landing-h1">
-            <span>Your</span> <span>Time</span>
+            <span>Time</span>
             <br />
             <span>to</span> <span>Thrive</span>
           </h1>

@@ -629,6 +629,19 @@ svg {
 #contactPage {
   margin-top: 11vh;
 
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba($primary, 0.75);
+    border-bottom: 1px solid rgba($primary, 0.3);
+    @include transition;
+
+    &:hover {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+  }
+
   .title-box {
     background-image: url(../assets/images/contact_img.jpg);
   }
@@ -669,6 +682,19 @@ svg {
 
 #faqPage {
   margin-top: 11vh;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba($primary, 0.75);
+    border-bottom: 1px solid rgba($primary, 0.3);
+    @include transition;
+
+    &:hover {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+  }
 
   .title-box {
     background-image: url(../assets/images/faq_img1.jpg);
