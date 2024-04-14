@@ -46,7 +46,7 @@ const Services = () => {
               </span>
               <br />
               <br />
-              Online for Real Life
+              Online Therapy For Real Life
               <br />
               <br />
               Life can be overwhelming, just ask Melissa. Juggling the demands
@@ -60,10 +60,9 @@ const Services = () => {
               counseling that fits into your life seamlessly.
               <br />
               <br />
-              With just a click, you're connected to a video session with your
-              me. No need to worry about parking or navigating through
-              unfamiliar office buildings. I make online counseling simple and
-              stress-free.
+              With just a click, you're connected to a video session with me. No
+              need to worry about parking or navigating through unfamiliar
+              office buildings. I make online counseling simple and stress-free.
               <br />
               <br />
               But does therapy over the web really work? Absolutely. I have been
