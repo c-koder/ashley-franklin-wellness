@@ -54,11 +54,7 @@ const Contact = () => {
             talk about if we would be a great fit and get started on your
             journey. I am happy to answer any questions you may have.
           </p>
-          <form
-            className="mt-5 pb-2 pb-xl-0"
-            onKeyPress={(e) => e.preventDefault()}
-            onSubmit={handleSubmit}
-          >
+          <form className="mt-5 pb-2 pb-xl-0" onSubmit={handleSubmit}>
             <div className="d-xl-flex gap-4 mb-3">
               <div className="w-100">
                 <label htmlFor="firstNameInput" className="form-label">
