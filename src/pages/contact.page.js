@@ -1,20 +1,48 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
+import emailjs from "@emailjs/browser";
 
 import { motion } from "framer-motion";
 
 const Contact = () => {
+  const form = useRef();
+
   const [data, setData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    desc: "",
+    submitting: false,
+    success: false,
+    error: undefined,
   });
 
-  /** TODO */
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setData({ submitting: true, success: false, error: undefined });
+
+    emailjs
+      .sendForm("service_76niayk", "template_roi5dk9", form.current, {
+        publicKey: "-XqRZiagk_PMClVY5",
+      })
+      .then(
+        () => {
+          setData({ submitting: false, success: true, error: undefined });
+        },
+        (error) => {
+          setData({ submitting: false, success: false, error: error.text });
+        }
+      );
   };
+
+  useEffect(() => {
+    if (data.success || data.error) {
+      setTimeout(() => {
+        setData({
+          submitting: false,
+          success: false,
+          error: undefined,
+        });
+      }, 6000);
+    }
+  }, [data]);
 
   return (
     <div id="contactPage">
@@ -54,87 +82,100 @@ const Contact = () => {
             talk about if we would be a great fit and get started on your
             journey. I am happy to answer any questions you may have.
           </p>
-          <form className="mt-5 pb-2 pb-xl-0" onSubmit={handleSubmit}>
+          <form
+            className="mt-5 pb-2 pb-xl-0"
+            ref={form}
+            onSubmit={handleSubmit}
+          >
             <div className="d-xl-flex gap-4 mb-3">
               <div className="w-100">
                 <label htmlFor="firstNameInput" className="form-label">
-                  First Name
+                  First Name*
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="firstNameInput"
+                  name="fname"
                   placeholder=""
-                  value={data.firstName}
-                  onChange={(e) =>
-                    setData({ ...data, firstName: e.target.value })
-                  }
+                  required
                 />
               </div>
               <div className="w-100 mt-xl-0 mt-3">
                 <label htmlFor="lastNameInput" className="form-label">
-                  Last Name
+                  Last Name*
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="lastNameInput"
+                  name="lname"
                   placeholder=""
-                  value={data.lastName}
-                  onChange={(e) =>
-                    setData({ ...data, lastName: e.target.value })
-                  }
+                  required
                 />
               </div>
             </div>
             <div className="d-xl-flex gap-4 mb-3">
               <div className="w-100">
                 <label htmlFor="emailInput" className="form-label">
-                  Email
+                  Email*
                 </label>
                 <input
                   type="email"
                   className="form-control"
                   id="emailInput"
+                  name="email"
                   placeholder=""
-                  value={data.email}
-                  onChange={(e) => setData({ ...data, email: e.target.value })}
+                  required
                 />
               </div>
               <div className="w-100 mt-xl-0 mt-3">
                 <label htmlFor="phoneInput" className="form-label">
-                  Phone Number
+                  Phone Number*
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="phoneInput"
+                  name="phone"
                   placeholder=""
-                  value={data.phone}
-                  onChange={(e) => setData({ ...data, phone: e.target.value })}
+                  required
                 />
               </div>
             </div>
             <div className="mb-3">
               <label htmlFor="descInput" className="form-label">
-                How can I help?
+                How can I help?*
               </label>
               <textarea
                 className="form-control"
                 id="descInput"
+                name="message"
                 rows="3"
                 maxLength={500}
                 style={{ height: 200, resize: "none" }}
-                value={data.desc}
-                onChange={(e) => setData({ ...data, desc: e.target.value })}
+                required
               />
             </div>
             <button
               type="submit"
               className="btn btn-primary d-flex mx-auto mt-xl-4 mt-5"
+              disabled={data.submitting}
             >
               Submit
             </button>
+            {(data.success || data.error) && (
+              <div
+                className={`alert alert-${
+                  data.success ? "success" : data.error && "danger"
+                }`}
+              >
+                {data.success &&
+                  "Thank you for contacting me! Your message has been successfully submitted and we'll be in touch soon."}
+                {data.error &&
+                  `An error occured while submitting: ${data.error}`}
+              </div>
+            )}
           </form>
           <hr className="my-xl-5 my-4" />
           <p className="text-center">
