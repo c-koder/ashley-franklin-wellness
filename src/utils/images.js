@@ -20,6 +20,9 @@ import SpecialtiesImg3 from "../assets/images/specialties_img3.jpg";
 import SpecialtiesImg4 from "../assets/images/specialties_img4.jpg";
 import SpecialtiesImg5 from "../assets/images/specialties_img5.jpg";
 
+import ptsVerified from "../assets/icons/pts-verified.png";
+import ptsVerified2 from "../assets/images/pts-verified2.png";
+
 export {
   LogoImg,
   LogoDarkImg,
@@ -34,4 +37,6 @@ export {
   SpecialtiesImg3,
   SpecialtiesImg4,
   SpecialtiesImg5,
+  ptsVerified,
+  ptsVerified2,
 };
