@@ -562,6 +562,17 @@ svg {
       box-shadow: none !important;
     }
 
+    .btn-pts {
+      border: 1px solid $primary;
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+      box-shadow: none !important;
+
+      img {
+        cursor: pointer;
+      }
+    }
+
     img {
       width: 200px;
       display: flex;
@@ -1199,6 +1210,29 @@ svg {
 @keyframes loading {
   100% {
     transform: translateX(100%);
+  }
+}
+
+.sx-verified-seal {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 9;
+  @include transition;
+
+  img {
+    width: 180px;
+    opacity: 0.75;
+    cursor: pointer;
+    @include transition;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+
+    img {
+      opacity: 1;
+    }
   }
 }
 

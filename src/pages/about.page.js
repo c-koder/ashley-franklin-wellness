@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 
-import { AshleyImg2, PsychologyTodayLogo } from "../utils/images";
+import { AshleyImg2, PsychologyTodayLogo, ptsVerified } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
@@ -216,14 +216,30 @@ const About = () => {
                 give me a shout. I’m here to help you navigate this crazy
                 journey we call womanhood, one step at a time.
               </p>
-              <Link to="/contact" className="d-flex justify-content-center">
-                <button
-                  className="btn btn-secondary my-2 mb-3"
-                  data-bs-dismiss="modal"
+              <div className="d-flex flex-wrap gap-3 justify-content-center">
+                <Link to="/contact">
+                  <button
+                    className="btn btn-secondary my-2 mb-3"
+                    data-bs-dismiss="modal"
+                  >
+                    Give a Shout!
+                  </button>
+                </Link>
+                <a
+                  href="https://www.psychologytoday.com/profile/1035259"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Give a Shout!
-                </button>
-              </Link>
+                  <button className="btn btn-pts d-flex gap-2 my-2 mb-3">
+                    <img
+                      src={ptsVerified}
+                      alt="pts-verified"
+                      style={{ width: 32, height: 32 }}
+                    />
+                    View Profile
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
