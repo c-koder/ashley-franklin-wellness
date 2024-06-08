@@ -14,6 +14,8 @@ import { AshleyImg1, AshleyImg3, HomeImg3 } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
+import { Helmet } from "react-helmet";
+
 const Home = () => {
   const [animated, setAnimated] = useState(false);
   const [ref, inView] = useInView();
@@ -22,7 +24,7 @@ const Home = () => {
     if (inView && !animated) {
       let tl = gsap.timeline();
 
-      tl.from("#home-landing-h1 span", {
+      tl.from("#home-landing-h2 span", {
         stagger: 0.1,
         opacity: 0,
         y: -6,
@@ -41,7 +43,7 @@ const Home = () => {
         y: -2,
       });
 
-      tl.from("#home-s1-h1", {
+      tl.from("#home-s1-h2", {
         opacity: 0,
         delay: 0.1,
         y: -2,
@@ -54,16 +56,23 @@ const Home = () => {
 
   return (
     <div ref={ref} id="homePage">
+      <Helmet>
+        <title>Ashley Franklin Wellness</title>
+        <meta
+          name="description"
+          content="Start your journey in women's counseling and embrace the life you desire. Ashley Franklin is dedicated to therapy for women, providing the support they deserve."
+        />
+      </Helmet>
       <section
         id="landingSection"
         className="d-flex flex-column justify-content-center align-items-center text-center"
       >
         <div className="container">
-          <h1 id="home-landing-h1">
+          <h2 id="home-landing-h2">
             <span>Time</span>
             <br />
             <span>to</span> <span>Thrive</span>
-          </h1>
+          </h2>
           <h5 id="home-landing-h5">
             Quiet your negative thoughts and awaken a supportive inner voice.
           </h5>
@@ -77,7 +86,7 @@ const Home = () => {
           className="d-flex flex-column justify-content-center align-items-center homeContent mb-5"
           style={{ minHeight: "80vh" }}
         >
-          <h1>Are You Living a Life of Fulfillment?</h1>
+          <h2>Are You Living a Life of Fulfillment?</h2>
           <div className="row container tab1 mt-xl-5 mt-3 justify-content-center">
             <div className="col-xl-6 order-lg-0 order-1 me-xl-4">
               <p>
@@ -129,16 +138,16 @@ const Home = () => {
               </Parallax>
               <AsyncImage
                 src={AshleyImg3}
-                alt="Are You Living a Life of Fulfillment?"
+                alt="Therapy for Women | Ashley Franklin Wellness"
               />
             </motion.div>
           </div>
         </section>
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
           <h1>
-            Take Control of Your Story
+            Practicing Therapy for Women
             <br />
-            and Find the Right Support System
+            to Take Control of Their Story
           </h1>
           <div className="row container tab2 mt-xl-5 mt-3 justify-content-center">
             <motion.div
@@ -156,7 +165,7 @@ const Home = () => {
             >
               <AsyncImage
                 src={HomeImg3}
-                alt="Take Control of Your Story and Find the Right Support System"
+                alt="Therapy for Women | Ashley Franklin Wellness"
               />
             </motion.div>
             <div className="ms-xl-4 col-xl-6 text-box">
@@ -188,7 +197,7 @@ const Home = () => {
           </div>
         </section>
         <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center homeContent mb-5">
-          <h1>Open Up in a Judgement-Free Space</h1>
+          <h2>Open Up in a Judgement-Free Space</h2>
           <div className="row container tab3 mt-xl-5 mt-3 justify-content-center">
             <div className="col-xl-6 order-lg-0 order-1 me-xl-4 text-box">
               <p>
@@ -236,7 +245,7 @@ const Home = () => {
             >
               <AsyncImage
                 src={AshleyImg1}
-                alt="Open Up in a Judgement-Free Space"
+                alt="Therapy for Women | Ashley Franklin Wellness"
               />
             </motion.div>
           </div>

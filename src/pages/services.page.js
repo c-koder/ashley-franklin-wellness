@@ -2,9 +2,20 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import { Helmet } from "react-helmet";
+
 const Services = () => {
   return (
     <div id="servicesPage">
+      <Helmet>
+        <title>
+          Online Therapy for Women | Clinical Social Work Supervision
+        </title>
+        <meta
+          name="description"
+          content="Connect with an experienced female counselor for professional online therapy, social work consultancy, and clinical supervision tailored to your needs."
+        />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{
@@ -31,13 +42,13 @@ const Services = () => {
           }}
           viewport={{ once: true }}
         >
-          Services
+          Wellness Services
         </motion.h1>
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
-            <h4>Online Therapy</h4>
+            <h2>Online Therapy</h2>
             <hr />
             <p className="mt-4">
               <span className="quote">
@@ -92,7 +103,7 @@ const Services = () => {
             </p>
           </div>
           <div className="my-5">
-            <h4>Clinical Supervision</h4>
+            <h2>Social Worker Clinical Supervision</h2>
             <hr />
             <p className="mt-4">
               Over the course of my extensive career, I have honed my expertise
@@ -121,7 +132,7 @@ const Services = () => {
             </p>
           </div>
           <div>
-            <h4>Consulting</h4>
+            <h2>Social Worker Consultation</h2>
             <hr />
             <p className="mt-4">
               I provide professional social work consultation services tailored

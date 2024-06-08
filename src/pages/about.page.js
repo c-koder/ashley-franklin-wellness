@@ -8,9 +8,18 @@ import { AshleyImg2, PsychologyTodayLogo, ptsVerified } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
+import { Helmet } from "react-helmet";
+
 const About = () => {
   return (
     <div id="aboutPage">
+      <Helmet>
+        <title>Ashley Franklin | Women's Therapist in Cape Cod</title>
+        <meta
+          name="description"
+          content="Meet Ashley Franklin, a dedicated womens therapist and licensed independent clinical social worker offering women counseling on life's challenges with expertise."
+        />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{
@@ -37,7 +46,7 @@ const About = () => {
           }}
           viewport={{ once: true }}
         >
-          Who is Ashley?
+          Who is Ashley Franklin?
         </motion.h1>
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
@@ -55,7 +64,10 @@ const About = () => {
             viewport={{ once: true }}
             className="img-box me-xl-5 mb-4 mb-xl-0"
           >
-            <AsyncImage src={AshleyImg2} alt="About Ashley" />
+            <AsyncImage
+              src={AshleyImg2}
+              alt="Therapy for Women | Ashley Franklin Wellness"
+            />
             <button
               className="btn btn-tertiary"
               data-bs-toggle="modal"
@@ -71,6 +83,9 @@ const About = () => {
             being a wife, mom, and pet parent! :)
             <br />
             <br />
+            <h2 style={{ fontWeight: 700, fontSize: 24 }}>
+              Why I'm a Womens Therapist?
+            </h2>
             I’ve been in the mental health field since 2009 because I love
             helping people recognize that they have the ability to create the
             life they desire. After receiving a bachelor’s in Psychology, I
