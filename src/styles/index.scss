@@ -204,6 +204,7 @@ svg {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 300px;
   background-size: cover;
@@ -317,7 +318,7 @@ svg {
       z-index: 1;
     }
 
-    h1 {
+    h2 {
       font-size: 90px;
       font-weight: 600;
       line-height: 1;
@@ -345,7 +346,7 @@ svg {
       min-height: 100vh;
       background-position: center;
 
-      h1 {
+      h2 {
         font-size: 60px;
         line-height: 1;
       }
@@ -361,7 +362,8 @@ svg {
   }
 
   .homeContent {
-    h1 {
+    h1,
+    h2 {
       font-size: 60px;
       font-weight: 700;
       text-align: center;
@@ -449,7 +451,8 @@ svg {
         }
       }
 
-      h1 {
+      h1,
+      h2 {
         font-size: 28px;
         line-height: 1.1;
       }
@@ -477,6 +480,10 @@ svg {
 
   .title-box {
     background-image: url(../assets/images/about_img2.jpg);
+
+    h1 {
+      top: 30%;
+    }
   }
 
   .cta {
@@ -830,7 +837,7 @@ svg {
     font-weight: 500;
   }
 
-  h4 {
+  h2 {
     font-family: $font-primary;
     font-weight: 700;
     font-size: 28px;
@@ -906,13 +913,14 @@ svg {
       float: none;
     }
 
-    h4 {
+    h2 {
       font-size: 24px;
     }
 
     .title-box {
       h1 {
-        top: 40%;
+        font-size: 36px;
+        top: 32%;
         bottom: 0;
       }
     }
@@ -953,7 +961,7 @@ svg {
     }
   }
 
-  h4 {
+  h2 {
     font-family: $font-primary;
     font-weight: 700;
     font-size: 28px;
@@ -1030,7 +1038,7 @@ svg {
       }
     }
 
-    h4 {
+    h2 {
       font-size: 24px;
     }
 
@@ -1079,7 +1087,7 @@ svg {
     }
   }
 
-  h4 {
+  h2 {
     font-family: $font-primary;
     font-weight: 700;
     font-size: 28px;
@@ -1155,7 +1163,7 @@ svg {
       }
     }
 
-    h4 {
+    h2 {
       font-size: 24px;
     }
 

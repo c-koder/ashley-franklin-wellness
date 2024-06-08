@@ -2,9 +2,18 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import { Helmet } from "react-helmet";
+
 const WhatToExpect = () => {
   return (
     <div id="whatToExpectPage">
+      <Helmet>
+        <title>Starting Therapy | Ashley Franklin Wellness</title>
+        <meta
+          name="description"
+          content="Starting therapy? Learn about the process, address fears of therapy, and understand what happens in sessions designed to support and empower you."
+        />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{
@@ -32,6 +41,8 @@ const WhatToExpect = () => {
           viewport={{ once: true }}
         >
           What to Expect
+          <br />
+          When Starting Therapy
         </motion.h1>
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
@@ -58,7 +69,7 @@ const WhatToExpect = () => {
             what you can expect during our sessions.
           </p>
           <br />
-          <h4>Getting Started</h4>
+          <h2>Getting Started With Therapy</h2>
           <hr />
           <p>
             Just reach out to me (or{" "}
@@ -84,7 +95,7 @@ const WhatToExpect = () => {
             telehealth meeting. It is the same link every time.
           </p>
           <br />
-          <h4>What Happens in a Therapy Session?</h4>
+          <h2>What Happens in a Therapy Session?</h2>
           <hr />
           <p>
             Our sessions are all about what's happening right now. I'll throw

@@ -10,9 +10,18 @@ import {
 
 import { AsyncImage } from "../components/image.component";
 
+import { Helmet } from "react-helmet";
+
 const Specialties = () => {
   return (
     <div id="specialtiesPage">
+      <Helmet>
+        <title>Health and Wellness Specialist Services</title>
+        <meta
+          name="description"
+          content="Gain control and balance with health and wellness specialist services. Enjoy expert therapy for women's anxiety, panic attacks, and burnout."
+        />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{
@@ -39,13 +48,13 @@ const Specialties = () => {
           }}
           viewport={{ once: true }}
         >
-          Specialties
+          Therapy Specialties
         </motion.h1>
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <div>
-            <h4>Anxiety</h4>
+            <h2>Anxiety</h2>
             <hr />
             <motion.div
               initial={{ opacity: 0, x: 12 }}
@@ -60,7 +69,10 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
             >
-              <AsyncImage src={SpecialtiesImg3} alt="Anxiety" />
+              <AsyncImage
+                src={SpecialtiesImg3}
+                alt="Anxiety | Ashley Franklin Wellness"
+              />
             </motion.div>
             <p className="mt-4">
               Anxiety feels like worry cranked up to the max.
@@ -104,7 +116,7 @@ const Specialties = () => {
             </ul>
           </div>
           <div className="my-5">
-            <h4>Stress & Burnout</h4>
+            <h2>Stress & Burnout</h2>
             <hr />
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -119,7 +131,10 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box2 me-xl-5 my-4 mb-xl-4"
             >
-              <AsyncImage src={SpecialtiesImg4} alt="Stress & Burnout" />
+              <AsyncImage
+                src={SpecialtiesImg4}
+                alt="Stress & Burnout | Ashley Franklin Wellness"
+              />
             </motion.div>
             <p className="mt-4">
               Stress is a daily reality, but when it becomes too much, it leaves
@@ -155,7 +170,7 @@ const Specialties = () => {
             </ul>
           </div>
           <div>
-            <h4>Health & Wellness</h4>
+            <h2>Health & Wellness</h2>
             <hr />
             <motion.div
               initial={{ opacity: 0, x: 12 }}
@@ -170,7 +185,10 @@ const Specialties = () => {
               viewport={{ once: true }}
               className="img-box img-box1 ms-xl-5 my-4 mb-xl-4"
             >
-              <AsyncImage src={SpecialtiesImg5} alt="Health & Wellness" />
+              <AsyncImage
+                src={SpecialtiesImg5}
+                alt="Health & Wellness | Ashley Franklin Wellness"
+              />
             </motion.div>
             <p className="mt-4">
               Let’s talk about health and wellness.{" "}

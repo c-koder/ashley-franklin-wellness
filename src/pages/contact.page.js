@@ -4,6 +4,8 @@ import emailjs from "@emailjs/browser";
 
 import { motion } from "framer-motion";
 
+import { Helmet } from "react-helmet";
+
 const Contact = () => {
   const form = useRef();
 
@@ -46,6 +48,13 @@ const Contact = () => {
 
   return (
     <div id="contactPage">
+      <Helmet>
+        <title>Contact | Ashley Franklin Wellness</title>
+        <meta
+          name="description"
+          content="Reach out to discuss your therapy needs and see if we're a good match. Contact us to start your journey. Call 774-476-0487 or email today."
+        />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

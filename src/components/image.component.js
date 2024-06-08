@@ -22,7 +22,7 @@ export const AsyncImage = (props) => {
   }, [props.src]);
 
   if (loadedSrc === props.src) {
-    return <img {...props} alt={props.src} />;
+    return <img {...props} alt={props.alt} />;
   }
 
   return <div className="img-loading" />;
