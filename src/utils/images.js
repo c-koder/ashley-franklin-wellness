@@ -23,6 +23,9 @@ import SpecialtiesImg5 from "../assets/images/specialties_img5.jpg";
 import ptsVerified from "../assets/icons/pts-verified.png";
 import ptsVerified2 from "../assets/images/pts-verified2.png";
 
+import BlogImg1 from "../assets/images/blog_img1.jpg";
+import BlogImg2 from "../assets/images/blog_img2.jpg";
+
 export {
   LogoImg,
   LogoDarkImg,
@@ -39,4 +42,6 @@ export {
   SpecialtiesImg5,
   ptsVerified,
   ptsVerified2,
+  BlogImg1,
+  BlogImg2,
 };

@@ -5,6 +5,8 @@ import FAQ from "./faq.page";
 import WhatToExpect from "./whattoexpect.page";
 import Specialties from "./specialties.page";
 import Services from "./services.page";
+import Blog from "./blog.page";
+import Login from "./login.page";
 
 export const routes = [
   {
@@ -33,6 +35,11 @@ export const routes = [
     element: WhatToExpect,
   },
   {
+    path: "/blog",
+    name: "Blog",
+    element: Blog,
+  },
+  {
     path: "/contact",
     name: "Contact",
     element: Contact,
@@ -41,5 +48,10 @@ export const routes = [
     path: "/faq",
     name: "FAQ",
     element: FAQ,
+  },
+  {
+    path: "/admin",
+    name: "Admin Login",
+    element: Login,
   },
 ];

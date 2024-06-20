@@ -27,7 +27,7 @@ const useWindowDimensions = () => {
 
 const useIsDesktop = () => {
   const { width } = useWindowDimensions();
-  return width > 992;
+  return width > 1200;
 };
 
 export default useIsDesktop;
