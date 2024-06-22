@@ -48,7 +48,7 @@ svg {
 .btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   font-weight: 500;
   font-size: 18px;
   color: $dark;
@@ -96,7 +96,7 @@ svg {
 }
 
 .form-control {
-  padding: 14px 18px;
+  padding: 12px 16px;
   box-shadow: none !important;
   border: 2px solid rgba($primary, 0.25);
   cursor: text;
@@ -104,6 +104,15 @@ svg {
   &:focus {
     border-color: $primary;
     box-shadow: 0px 6px 20px -9px rgba($primary, 0.25) !important;
+  }
+}
+
+.form-group {
+  label {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba($dark, 0.8);
+    margin-bottom: 5px;
   }
 }
 
@@ -232,18 +241,39 @@ svg {
   .dropdown-menu {
     padding: 0 !important;
     border-radius: 12px;
-    background-color: $light;
-    box-shadow: 0px 2px 30px -3px rgba($dark, 0.5);
+    margin-top: 15px;
+    background-image: linear-gradient(
+      120deg,
+      rgba($secondary, 0.1) 5%,
+      rgba($primary, 0.4) 95%
+    );
+    backdrop-filter: blur(50px);
+    border: 1px solid rgba($dark, 0.025);
+    box-shadow: 0px 2px 60px -3px rgba($primary, 0.2);
 
     .dropdown-item {
       padding: 12px 24px;
-      border-radius: 12px;
-      background-color: $light;
+      border-radius: 12px 12px 0 0;
       font-weight: 500;
       @include transition;
 
       &:hover {
         background-color: rgba($primary, 0.25);
+      }
+    }
+
+    li {
+      &:first-child {
+        .dropdown-item {
+          border-radius: 12px 12px 0 0;
+        }
+      }
+
+      &:last-child {
+        .dropdown-item {
+          border-radius: 0 0 12px 12px;
+        }
+        border-top: 1px solid rgba($primary, 0.5);
       }
     }
   }
@@ -1908,6 +1938,109 @@ svg {
   }
 }
 
+#settingsPage {
+  margin-top: 11vh;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba($primary, 0.75);
+    border-bottom: 1px solid rgba($primary, 0.3);
+    @include transition;
+
+    &:hover {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+  }
+
+  .title-box {
+    background-image: url(../assets/images/contact_img.jpg);
+  }
+
+  p {
+    font-size: 20px;
+    font-family: $font-secondary;
+    line-height: 1.75;
+    font-weight: 500;
+
+    span {
+      font-family: $font-secondary !important;
+      font-weight: 700;
+    }
+  }
+
+  h2 {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 24px;
+    color: $primary;
+  }
+
+  hr {
+    border: 1px solid rgba($primary, 0.25);
+    margin: 0;
+  }
+
+  .table {
+    .form-control {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none !important;
+      resize: none !important;
+      min-width: 300px;
+      height: 100%;
+    }
+
+    textarea {
+      padding-right: 5px !important;
+    }
+
+    th,
+    td {
+      padding: 6px 12px;
+      vertical-align: middle;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px !important;
+      background-color: rgba($dark, 0.2);
+    }
+  }
+
+  @media screen and (max-width: $mobile-res) {
+    margin-top: 5vh;
+
+    .container {
+      padding: 0 4vw;
+    }
+
+    .title-box {
+      h1 {
+        top: 45%;
+        bottom: 0;
+      }
+    }
+
+    .text-box {
+      p {
+        font-size: 18px;
+      }
+    }
+
+    // .table {
+    //   min-width: 800px;
+    //   overflow-x: scroll;
+    // }
+  }
+}
+
 .img-loading {
   position: relative;
   background-color: $light;
@@ -2182,12 +2315,9 @@ footer {
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
+  height: 10px;
   background-color: transparent;
-
-  @media only screen and (max-width: 1200px) {
-    display: none;
-  }
 }
 
 ::-webkit-scrollbar-thumb {

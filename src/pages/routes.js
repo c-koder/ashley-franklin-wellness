@@ -7,6 +7,7 @@ import Specialties from "./specialties.page";
 import Services from "./services.page";
 import Blog from "./blog.page";
 import Login from "./login.page";
+import Settings from "./settings.page";
 
 export const routes = [
   {
@@ -53,5 +54,10 @@ export const routes = [
     path: "/admin",
     name: "Admin Login",
     element: Login,
+  },
+  {
+    path: "/settings",
+    name: "Site Settings",
+    element: Settings,
   },
 ];

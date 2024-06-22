@@ -6,8 +6,12 @@ import { motion } from "framer-motion";
 
 import { Helmet } from "react-helmet";
 
+import { useSelector } from "react-redux";
+
 const Contact = () => {
   const form = useRef();
+
+  const siteSettings = useSelector((state) => state.siteSettings);
 
   const [data, setData] = useState({
     submitting: false,
@@ -193,11 +197,12 @@ const Contact = () => {
             or go to the nearest emergency room.
           </p>
           <p className="text-center mt-3">
-            <span>Phone: </span>774-476-0487
+            <span>Phone: </span>
+            {siteSettings.contactInfo.phone}
             <br />
             <span>Email: </span>
-            <a href="mailto:ashleyfranklinwellness@gmail.com">
-              ashleyfranklinwellness@gmail.com
+            <a href={`mailto:${siteSettings.contactInfo.email}`}>
+              {siteSettings.contactInfo.email}
             </a>
           </p>
         </div>

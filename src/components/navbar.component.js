@@ -21,6 +21,7 @@ import { setCurrentUser } from "../store/actions";
 
 const AdminBtn = () => {
   const dispatch = useDispatch();
+
   const currentUser = useSelector((state) => state.currentUser);
 
   const handleLogout = async () => {
@@ -38,9 +39,9 @@ const AdminBtn = () => {
       >
         <UserIcon />
       </button>
-      <ul className="dropdown-menu dropdown-menu-end mt-3">
+      <ul className="dropdown-menu dropdown-menu-end">
         <li>
-          <Link className="dropdown-item" href="#">
+          <Link className="dropdown-item" to="/settings">
             Site Settings
           </Link>
         </li>
@@ -58,6 +59,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const useDesktop = useIsDesktop();
+
+  const siteSettings = useSelector((state) => state.siteSettings);
 
   useEffect(() => {
     let size = window.innerWidth;
@@ -147,7 +150,7 @@ const Navbar = () => {
           <ul className="navbar-nav gap-xl-3">
             {routes.map(
               (route, index) =>
-                index !== 8 && (
+                index < 8 && (
                   <motion.li
                     initial={{ opacity: 0, y: -2 }}
                     whileInView={{
@@ -191,7 +194,7 @@ const Navbar = () => {
               <a href="tel:+17744760487">
                 <button className="btn btn-primary">
                   <PhoneIcon />
-                  774-476-0487
+                  {siteSettings.contactInfo.phone}
                 </button>
               </a>
             </motion.li>
