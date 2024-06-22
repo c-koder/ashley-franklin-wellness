@@ -24,11 +24,17 @@ import { deleteUser, onAuthStateChanged, signOut } from "firebase/auth";
 
 import { auth } from "../config/fb";
 
-import { setAuthError, setAuthLoading, setCurrentUser } from "../store/actions";
+import {
+  setAuthError,
+  setAuthLoading,
+  setCurrentUser,
+  setSiteSettings,
+} from "../store/actions";
 
 import Loader from "../components/loader.component";
 
 import { isUserWhitelisted } from "../services/admin.service";
+import { getSettings } from "../services/settings.service";
 
 const Main = () => {
   const location = useLocation();
@@ -39,11 +45,13 @@ const Main = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    // eslint-disable-next-line
+  }, [location]);
 
+  useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
+      dispatch(setAuthLoading(true));
       if (user) {
-        dispatch(setAuthLoading(true));
-
         const isWhitelisted = await isUserWhitelisted(user.email);
 
         if (!isWhitelisted) {
@@ -60,12 +68,18 @@ const Main = () => {
         }
       }
 
-      setTimeout(() => {
-        dispatch(setAuthLoading(false));
-      }, 500);
+      const settings = await getSettings();
+
+      if (settings) {
+        const contactInfo = settings.find((item) => item.id === "contactInfo");
+        const metaDetails = settings.find((item) => item.id === "metaDetails");
+
+        dispatch(setSiteSettings({ contactInfo, metaDetails }));
+      }
+
+      dispatch(setAuthLoading(false));
     });
-    // eslint-disable-next-line
-  }, [location]);
+  }, []);
 
   return authLoading ? (
     <Loader />

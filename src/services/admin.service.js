@@ -23,8 +23,7 @@ const isUserWhitelisted = async (email) => {
 
     return isWhitelisted;
   } catch (error) {
-    console.error("Error checking whitelist status:", error);
-    return false;
+    throw new Error(error.message);
   }
 };
 

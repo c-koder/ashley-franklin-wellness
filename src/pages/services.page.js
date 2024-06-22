@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import { useSelector } from "react-redux";
+
 import { Helmet } from "react-helmet";
 
 const Services = () => {
+  const siteSettings = useSelector((state) => state.siteSettings);
+
   return (
     <div id="servicesPage">
       <Helmet>
@@ -98,8 +102,10 @@ const Services = () => {
               Don't let life's circumstances hold you back from getting the help
               you deserve. Contact me today for a free 15-minute phone
               consultation and take the first step towards a happier, healthier
-              you: <a href="tel:+17744760487">774-476-0487</a> or{" "}
-              <Link to="/contact">Book Online</Link>.
+              you:{" "}
+              <a href="tel:+17744760487">
+                {siteSettings.contactInfo.phone}
+              </a> or <Link to="/contact">Book Online</Link>.
             </p>
           </div>
           <div className="my-5">
@@ -127,8 +133,9 @@ const Services = () => {
               <br />
               Contact me today to take the first step towards completing your
               licensure requirements:{" "}
-              <a href="tel:+17744760487">774-476-0487</a> or{" "}
-              <Link to="/contact">Book Online</Link>.
+              <a href="tel:+17744760487">
+                {siteSettings.contactInfo.phone}
+              </a> or <Link to="/contact">Book Online</Link>.
             </p>
           </div>
           <div>
@@ -156,8 +163,9 @@ const Services = () => {
               <br />
               Contact me today to schedule a free 15 minute consultation to
               address your organizations needs:{" "}
-              <a href="tel:+17744760487">774-476-0487</a> or{" "}
-              <Link to="/contact">Book Online</Link>.
+              <a href="tel:+17744760487">
+                {siteSettings.contactInfo.phone}
+              </a> or <Link to="/contact">Book Online</Link>.
             </p>
           </div>
         </div>

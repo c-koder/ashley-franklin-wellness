@@ -25,8 +25,7 @@ const getAllArticles = async () => {
 
     return articles;
   } catch (error) {
-    console.error("Error fetching articles:", error);
-    return false;
+    throw new Error(error.message);
   }
 };
 
@@ -47,28 +46,56 @@ const getArticle = async (slug) => {
       return null;
     }
   } catch (error) {
-    console.error("Error fetching article:", error);
-    return false;
+    throw new Error(error.message);
   }
 };
 
 const createArticle = async (data) => {
   try {
+    const slugExists = await isSlugExists(data.slug);
+
+    if (slugExists) {
+      throw new Error("Slug already exists.");
+    }
+
     await addDoc(collection(db, "articles"), data);
     return true;
   } catch (error) {
-    console.error("Error creating article:", error);
-    return false;
+    throw new Error(error.message);
   }
 };
 
-const updateArticle = async (id, values) => {
+const updateArticle = async (id, oldValues, newValues) => {
   try {
-    await updateDoc(doc(db, "articles", id), values);
+    const updates = Object.fromEntries(
+      Object.entries(newValues).filter(
+        ([key, value]) => oldValues[key] !== value
+      )
+    );
+
+    if (updates.slug && (await isSlugExists(updates.slug))) {
+      throw new Error("Slug already exists.");
+    }
+
+    await updateDoc(doc(db, "articles", id), updates);
     return true;
   } catch (error) {
-    console.error("Error updating article:", error);
-    return false;
+    throw new Error(error.message);
+  }
+};
+
+const isSlugExists = async (slug) => {
+  try {
+    const slugQuery = query(
+      collection(db, "articles"),
+      where("slug", "==", slug)
+    );
+
+    const querySnapshot = await getDocs(slugQuery);
+
+    return !querySnapshot.empty;
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
 

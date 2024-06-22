@@ -18,3 +18,10 @@ export const setAuthError = (payload) => {
     payload: payload,
   };
 };
+
+export const setSiteSettings = (payload) => {
+  return {
+    type: "SET_SITE_SETTINGS",
+    payload: payload,
+  };
+};

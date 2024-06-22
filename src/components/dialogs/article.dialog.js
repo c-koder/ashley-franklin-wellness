@@ -76,26 +76,30 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
       setError(undefined);
       setProcessing(true);
 
-      const d = data;
-
+      const d = { ...data };
       d.content = d.content.replace(/<a\s+href=/g, '<a target="_blank" href=');
       d.slug = data.metaTitle.toLowerCase().replace(/ /g, "-");
 
-      if (isEdit) {
-        d.modifiedDate = moment().format();
-
-        await updateArticle(d.id, d);
-        window.location.reload();
-        return;
+      try {
+        if (isEdit) {
+          d.modifiedDate = moment().format();
+          const result = await updateArticle(d.id, editingArticle, d);
+          if (result) {
+            window.location.reload();
+          }
+        } else {
+          d.author = auth.currentUser.displayName;
+          d.publishDate = moment().format();
+          const result = await createArticle(d);
+          if (result) {
+            window.location.reload();
+          }
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setProcessing(false);
       }
-
-      d.author = auth.currentUser.displayName;
-      d.publishDate = moment().format();
-
-      await createArticle(data);
-
-      setProcessing(true);
-      window.location.reload();
     }
   };
 
