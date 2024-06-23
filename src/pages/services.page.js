@@ -4,22 +4,11 @@ import { motion } from "framer-motion";
 
 import { useSelector } from "react-redux";
 
-import { Helmet } from "react-helmet";
-
 const Services = () => {
   const siteSettings = useSelector((state) => state.siteSettings);
 
   return (
     <div id="servicesPage">
-      <Helmet>
-        <title>
-          Online Therapy for Women | Clinical Social Work Supervision
-        </title>
-        <meta
-          name="description"
-          content="Connect with an experienced female counselor for professional online therapy, social work consultancy, and clinical supervision tailored to your needs."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

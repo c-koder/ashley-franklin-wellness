@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 
 import moment from "moment";
 
-import { Helmet } from "react-helmet";
-
 import { Link } from "react-router-dom";
 
 import {
@@ -62,13 +60,6 @@ const Blog = () => {
     <Loader />
   ) : (
     <div id="blogPage">
-      <Helmet>
-        <title>Blog | Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Begin your journey with our women's counseling blog and discover the life you desire. Ashley Franklin shares expert insights and valuable tips on therapy for women, providing the support you deserve."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

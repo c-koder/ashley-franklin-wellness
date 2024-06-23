@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { motion } from "framer-motion";
-
-import { Helmet } from "react-helmet";
-
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { updateSettings } from "../services/settings.service";
 
@@ -50,13 +46,6 @@ const Settings = () => {
 
   return (
     <div id="settingsPage">
-      <Helmet>
-        <title>Settings | Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Welcome to the settings page. Manage site settings of Ashley Franklin's therapy services for women with ease and efficiency."
-        />
-      </Helmet>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
           <h2>Meta Information</h2>
@@ -75,7 +64,7 @@ const Settings = () => {
                 </thead>
                 <tbody>
                   {settings.metaDetails.metaInfo.map((page, index) => (
-                    <tr key={index} scope="row">
+                    <tr key={index}>
                       <td>{page.pagename}</td>
                       <td>
                         <input

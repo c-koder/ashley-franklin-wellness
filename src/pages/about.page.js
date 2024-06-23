@@ -8,18 +8,9 @@ import { AshleyImg2, PsychologyTodayLogo, ptsVerified } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
-import { Helmet } from "react-helmet";
-
 const About = () => {
   return (
     <div id="aboutPage">
-      <Helmet>
-        <title>Ashley Franklin | Women's Therapist in Cape Cod</title>
-        <meta
-          name="description"
-          content="Meet Ashley Franklin, a dedicated womens therapist and licensed independent clinical social worker offering women counseling on life's challenges with expertise."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

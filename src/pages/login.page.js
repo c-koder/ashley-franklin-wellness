@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { LogoDarkImg } from "../utils/images";
 
-import { Helmet } from "react-helmet";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import { signInWithPopup } from "firebase/auth";
@@ -49,13 +47,6 @@ const Login = () => {
 
   return (
     <div id="loginPage">
-      <Helmet>
-        <title>Admin Login | Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Welcome to the admin page. Manage and oversee all aspects of Ashley Franklin's therapy services for women with ease and efficiency."
-        />
-      </Helmet>
       <section className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
         <div className="card">
           <img src={LogoDarkImg} width="300px" alt="brand-logo" />

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Routes,
@@ -11,6 +11,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { Tooltip } from "react-tooltip";
+
+import { Helmet } from "react-helmet";
 
 import Footer from "../components/footer.component";
 import Navbar from "../components/navbar.component";
@@ -34,6 +36,7 @@ import {
 import Loader from "../components/loader.component";
 
 import { isUserWhitelisted } from "../services/admin.service";
+
 import { getSettings } from "../services/settings.service";
 
 const Main = () => {
@@ -42,6 +45,9 @@ const Main = () => {
   const navigate = useNavigate();
 
   const authLoading = useSelector((state) => state.authLoading);
+  const siteSettings = useSelector((state) => state.siteSettings);
+
+  const [meta, setMeta] = useState({ title: "", desc: "" });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -79,12 +85,33 @@ const Main = () => {
 
       dispatch(setAuthLoading(false));
     });
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (siteSettings.metaDetails) {
+      const metaMap = siteSettings.metaDetails.metaInfo.reduce((acc, meta) => {
+        acc[`/${meta.pagename.toLowerCase().replace(/ /g, "-")}`] = meta;
+        return acc;
+      }, {});
+
+      const meta =
+        metaMap[location.pathname === "/" ? "/home" : location.pathname];
+
+      if (meta) {
+        setMeta({ title: meta.metaTitle, desc: meta.metaDescription });
+      }
+    }
+  }, [siteSettings, location]);
 
   return authLoading ? (
     <Loader />
   ) : (
     <>
+      <Helmet>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.desc} />
+      </Helmet>
       {!location.pathname.includes("admin") && (
         <a
           href="https://www.psychologytoday.com/profile/1035259"

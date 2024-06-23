@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { Helmet } from "react-helmet";
-
 const FAQ = () => {
   const accordionItems = [
     {
@@ -53,13 +51,6 @@ const FAQ = () => {
 
   return (
     <div id="faqPage">
-      <Helmet>
-        <title>Therapy FAQ | Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Browse our therapy FAQ for insights on how counseling works, from session experiences to dealing with insurance, and how therapy fosters positive change."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

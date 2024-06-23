@@ -10,18 +10,9 @@ import {
 
 import { AsyncImage } from "../components/image.component";
 
-import { Helmet } from "react-helmet";
-
 const Specialties = () => {
   return (
     <div id="specialtiesPage">
-      <Helmet>
-        <title>Health and Wellness Specialist Services</title>
-        <meta
-          name="description"
-          content="Gain control and balance with health and wellness specialist services. Enjoy expert therapy for women's anxiety, panic attacks, and burnout."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{
