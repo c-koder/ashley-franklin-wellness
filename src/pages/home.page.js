@@ -14,8 +14,6 @@ import { AshleyImg1, AshleyImg3, HomeImg3 } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
-import { Helmet } from "react-helmet";
-
 const Home = () => {
   const [animated, setAnimated] = useState(false);
   const [ref, inView] = useInView();
@@ -56,13 +54,6 @@ const Home = () => {
 
   return (
     <div ref={ref} id="homePage">
-      <Helmet>
-        <title>Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Start your journey in women's counseling and embrace the life you desire. Ashley Franklin is dedicated to therapy for women, providing the support they deserve."
-        />
-      </Helmet>
       <section
         id="landingSection"
         className="d-flex flex-column justify-content-center align-items-center text-center"

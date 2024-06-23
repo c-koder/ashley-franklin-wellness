@@ -11,6 +11,7 @@ import moment from "moment";
 import { getArticle } from "../services/article.service";
 
 import Loader from "../components/loader.component";
+
 import { HomeIcon } from "@heroicons/react/24/outline";
 
 const Article = () => {

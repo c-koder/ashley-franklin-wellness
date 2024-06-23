@@ -2,18 +2,9 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { Helmet } from "react-helmet";
-
 const WhatToExpect = () => {
   return (
     <div id="whatToExpectPage">
-      <Helmet>
-        <title>Starting Therapy | Ashley Franklin Wellness</title>
-        <meta
-          name="description"
-          content="Starting therapy? Learn about the process, address fears of therapy, and understand what happens in sessions designed to support and empower you."
-        />
-      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -12 }}
         whileInView={{

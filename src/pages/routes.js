@@ -52,12 +52,12 @@ export const routes = [
   },
   {
     path: "/admin",
-    name: "Admin Login",
+    name: "Admin",
     element: Login,
   },
   {
     path: "/settings",
-    name: "Site Settings",
+    name: "Settings",
     element: Settings,
   },
 ];

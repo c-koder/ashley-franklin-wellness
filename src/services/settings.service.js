@@ -1,14 +1,4 @@
-import {
-  collection,
-  orderBy,
-  query,
-  getDocs,
-  addDoc,
-  doc,
-  updateDoc,
-  where,
-  limit,
-} from "firebase/firestore";
+import { collection, query, getDocs, doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../config/fb";
 
