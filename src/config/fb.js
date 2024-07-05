@@ -6,6 +6,7 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBfBgam_AOP3U866QO0r1shwplGy-jz3Xk",
@@ -21,7 +22,8 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth();
 const db = getFirestore(app);
+const storage = getStorage(app, "gs://ashley-franklin-wellness.appspot.com");
 
 setPersistence(auth, browserSessionPersistence);
 
-export { app, provider, auth, db };
+export { app, provider, auth, db, storage };
