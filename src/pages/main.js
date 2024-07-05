@@ -30,6 +30,7 @@ import {
   setAuthError,
   setAuthLoading,
   setCurrentUser,
+  setSiteContent,
   setSiteSettings,
 } from "../store/actions";
 
@@ -39,6 +40,10 @@ import { isUserWhitelisted } from "../services/admin.service";
 
 import { getSettings } from "../services/settings.service";
 
+import { getContent } from "../services/content.service";
+import Settings from "./settings.page";
+import Login from "./login.page";
+
 const Main = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -46,6 +51,7 @@ const Main = () => {
 
   const authLoading = useSelector((state) => state.authLoading);
   const siteSettings = useSelector((state) => state.siteSettings);
+  const currentUser = useSelector((state) => state.currentUser);
 
   const [meta, setMeta] = useState({ title: "", desc: "" });
 
@@ -76,11 +82,17 @@ const Main = () => {
 
       const settings = await getSettings();
 
+      const content = await getContent();
+
       if (settings) {
         const contactInfo = settings.find((item) => item.id === "contactInfo");
         const metaDetails = settings.find((item) => item.id === "metaDetails");
 
         dispatch(setSiteSettings({ contactInfo, metaDetails }));
+      }
+
+      if (content) {
+        dispatch(setSiteContent(content));
       }
 
       dispatch(setAuthLoading(false));
@@ -128,6 +140,10 @@ const Main = () => {
         {routes.map((route, index) => (
           <Route key={index} path={route.path} element={<route.element />} />
         ))}
+
+        {currentUser && <Route path="/settings" element={<Settings />} />}
+
+        <Route exact path="/admin" element={<Login />} />
         <Route exact path="/blog/:slug" element={<Article />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

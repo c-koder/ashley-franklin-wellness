@@ -6,8 +6,6 @@ import WhatToExpect from "./whattoexpect.page";
 import Specialties from "./specialties.page";
 import Services from "./services.page";
 import Blog from "./blog.page";
-import Login from "./login.page";
-import Settings from "./settings.page";
 
 export const routes = [
   {
@@ -49,15 +47,5 @@ export const routes = [
     path: "/faq",
     name: "FAQ",
     element: FAQ,
-  },
-  {
-    path: "/admin",
-    name: "Admin",
-    element: Login,
-  },
-  {
-    path: "/settings",
-    name: "Settings",
-    element: Settings,
   },
 ];

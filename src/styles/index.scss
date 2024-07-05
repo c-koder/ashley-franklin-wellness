@@ -82,11 +82,71 @@ svg {
     }
   }
 
+  &.btn-plus {
+    padding-left: 0 !important;
+    box-shadow: none !important;
+    opacity: 0.75;
+
+    svg {
+      fill: $primary;
+      width: 32px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media screen and (max-width: $mobile-res) {
+      svg {
+        width: 24px;
+      }
+    }
+  }
+
+  &.btn-edit {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 6px 6px 8px !important;
+    background-color: $primary !important;
+    border-radius: 4px;
+    transform: none !important;
+
+    svg {
+      fill: $light;
+      width: 20px;
+    }
+  }
+
   svg {
     width: 20px;
     cursor: pointer;
     @include transition;
   }
+}
+
+.admin-hover-box {
+  outline: 1px dashed transparent;
+  outline-offset: 2px;
+  border-radius: 4px;
+
+  &:hover {
+    outline-color: $primary;
+
+    .btn-edit {
+      display: block;
+    }
+  }
+}
+
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 .form-label {
@@ -372,12 +432,6 @@ svg {
   }
 }
 
-.quote {
-  font-family: $font-secondary;
-  font-style: italic;
-  font-weight: 600;
-}
-
 #homePage {
   #landingSection {
     position: relative;
@@ -547,7 +601,7 @@ svg {
     background-image: url(../assets/images/home_img5.jpg);
 
     .btn {
-      padding: 12px 18px !important;
+      padding: 12px 18px;
       background-color: $light;
       color: $primary;
       width: fit-content;
@@ -1410,15 +1464,9 @@ svg {
       box-shadow: none !important;
 
       &.btn-plus {
-        opacity: 0.5;
-
         svg {
           stroke: $light;
           width: 60px;
-        }
-
-        &:hover {
-          opacity: 1;
         }
       }
     }

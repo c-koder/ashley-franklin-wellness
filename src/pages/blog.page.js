@@ -89,7 +89,7 @@ const Blog = () => {
           Therapy Blog
           {currentUser !== null && (
             <button
-              className="btn btn-plus"
+              className="btn btn-plus ms-3"
               data-bs-toggle="modal"
               data-bs-target="#articleModal"
             >

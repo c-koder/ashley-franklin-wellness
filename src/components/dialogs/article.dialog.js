@@ -158,16 +158,18 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
                       {
                         label: "Bold",
                         style: "BOLD",
-                        className: "custom-css-className",
                       },
                       { label: "Italic", style: "ITALIC" },
                       { label: "Underline", style: "UNDERLINE" },
                     ],
                     BLOCK_TYPE_DROPDOWN: [
                       { label: "Normal", style: "unstyled" },
-                      { label: "Heading Large", style: "header-two" },
-                      { label: "Heading Medium", style: "header-three" },
-                      { label: "Heading Small", style: "header-four" },
+                      { label: "H1", style: "header-two" },
+                      { label: "H2", style: "header-two" },
+                      { label: "H3", style: "header-three" },
+                      { label: "H4", style: "header-four" },
+                      { label: "H5", style: "header-FOVE" },
+                      { label: "H6", style: "header-SIX" },
                     ],
                     BLOCK_TYPE_BUTTONS: [
                       { label: "UL", style: "unordered-list-item" },

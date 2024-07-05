@@ -25,3 +25,10 @@ export const setSiteSettings = (payload) => {
     payload: payload,
   };
 };
+
+export const setSiteContent = (payload) => {
+  return {
+    type: "SET_SITE_CONTENT",
+    payload: payload,
+  };
+};

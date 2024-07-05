@@ -18,6 +18,8 @@ export const AsyncImage = (props) => {
       return () => {
         image.removeEventListener("load", handleLoad);
       };
+    } else {
+      setLoadedSrc(null);
     }
   }, [props.src]);
 

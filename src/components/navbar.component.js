@@ -148,35 +148,32 @@ const Navbar = () => {
           id="navBar"
         >
           <ul className="navbar-nav gap-xl-3">
-            {routes.map(
-              (route, index) =>
-                index < 8 && (
-                  <motion.li
-                    initial={{ opacity: 0, y: -2 }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        duration: 0.2,
-                        delay: 0.1 * index + 0.5,
-                      },
-                    }}
-                    viewport={{ once: true }}
-                    className="nav-item"
-                    key={route.path}
-                  >
-                    <a
-                      className={`nav-link ${
-                        location.pathname !== "/" ? "link-dark" : ""
-                      }`}
-                      href={route.path}
-                      onClick={handleClick}
-                    >
-                      {route.name}
-                    </a>
-                  </motion.li>
-                )
-            )}
+            {routes.map((route, index) => (
+              <motion.li
+                initial={{ opacity: 0, y: -2 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.2,
+                    delay: 0.1 * index + 0.5,
+                  },
+                }}
+                viewport={{ once: true }}
+                className="nav-item"
+                key={route.path}
+              >
+                <a
+                  className={`nav-link ${
+                    location.pathname !== "/" ? "link-dark" : ""
+                  }`}
+                  href={route.path}
+                  onClick={handleClick}
+                >
+                  {route.name}
+                </a>
+              </motion.li>
+            ))}
           </ul>
           <ul className="navbar-nav ms-auto align-items-center">
             <motion.li
