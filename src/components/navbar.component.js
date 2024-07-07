@@ -188,7 +188,7 @@ const Navbar = () => {
               viewport={{ once: true }}
               className="nav-item"
             >
-              <a href="tel:+17744760487">
+              <a href={`tel:+1${siteSettings.contactInfo.phone}`}>
                 <button className="btn btn-primary">
                   <PhoneIcon />
                   {siteSettings.contactInfo.phone}

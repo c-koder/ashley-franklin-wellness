@@ -2,13 +2,31 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AshleyImg2, PsychologyTodayLogo, ptsVerified } from "../utils/images";
+import {
+  XMarkIcon,
+  InformationCircleIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/solid";
+
+import { PsychologyTodayLogo, ptsVerified } from "../utils/images";
 
 import { AsyncImage } from "../components/image.component";
 
+import EditButton from "../components/editBtn.component";
+
+import { handleFileUpload } from "../utils/functions";
+
 const About = () => {
+  const dispatch = useDispatch();
+
+  const siteContent = useSelector((state) => state.siteContent);
+  const siteSettings = useSelector((state) => state.siteSettings);
+  const currentUser = useSelector((state) => state.currentUser);
+
+  const aboutData = siteContent.find((content) => content.id === "about");
+
   return (
     <div id="aboutPage">
       <motion.div
@@ -23,7 +41,9 @@ const About = () => {
           },
         }}
         viewport={{ once: true }}
-        className="title-box"
+        className={`title-box position-relative ${
+          currentUser && "admin-hover-box"
+        }`}
       >
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -37,8 +57,14 @@ const About = () => {
           }}
           viewport={{ once: true }}
         >
-          Who is Ashley Franklin?
+          {aboutData.titlebox.title}
         </motion.h1>
+        <EditButton
+          page="about"
+          section="titlebox"
+          field="title"
+          content={aboutData.titlebox.title}
+        />
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
@@ -53,10 +79,13 @@ const About = () => {
               },
             }}
             viewport={{ once: true }}
-            className="img-box me-xl-5 mb-4 mb-xl-0"
+            className={`img-box me-xl-5 mb-4 mb-xl-0 ${
+              currentUser && "admin-hover-box"
+            }`}
+            style={{ zIndex: 1 }}
           >
             <AsyncImage
-              src={AshleyImg2}
+              src={aboutData.s1.src}
               alt="Therapy for Women | Ashley Franklin Wellness"
             />
             <button
@@ -67,79 +96,69 @@ const About = () => {
               <InformationCircleIcon />
               Psychology Today Summary
             </button>
+            <input
+              className="file-input"
+              type="file"
+              id="s1imginput"
+              onChange={(e) =>
+                handleFileUpload(
+                  e.target.files[0],
+                  "about",
+                  "s1",
+                  siteContent,
+                  dispatch
+                )
+              }
+            />
+            <label
+              htmlFor="s1imginput"
+              className="btn btn-plus btn-edit"
+              style={{ right: 0, left: "auto" }}
+            >
+              <PencilSquareIcon />
+            </label>
           </motion.div>
-          <p>
-            Hey there! I’m Ashley. I specialize in therapy for women’s issues.
-            I’m a licensed independent clinical social worker—in addition to
-            being a wife, mom, and pet parent! :)
-            <br />
-            <br />
-            <h2 style={{ fontWeight: 700, fontSize: 24 }}>
-              Why I'm a Womens Therapist?
-            </h2>
-            I’ve been in the mental health field since 2009 because I love
-            helping people recognize that they have the ability to create the
-            life they desire. After receiving a bachelor’s in Psychology, I
-            earned a master’s from Boston University, and my practice is
-            currently geared toward helping women navigate life’s twists and
-            turns.
-            <br />
-            <br />
-            Life is one wild ride, isn’t it? So often, we inadvertently get in
-            our own way, berate ourselves for our shortcomings, and then feel
-            like there’s no path to a better tomorrow. Amid all the expectations
-            and pressures, you might be asking yourself:{" "}
-            <span className="quote">
-              &quot;Am I enough to handle this?&quot;
-            </span>{" "}
-            If you take nothing else away from this website or our time
-            together, I would like you to remember:{" "}
-            <span className="quote">
-              you are more than enough—just as you are.
-            </span>
-            <br />
-            <br />
-            I prioritize a holistic approach to mental health. In our sessions,
-            we will be looking at everything that influences your well-being.
-            This includes your mind, along with your lifestyle, moods, and
-            emotions, as each aspect of our lives is deeply interconnected.
-            You’ve probably noticed how, when one part of your life is off, your
-            whole being can suffer as a result.
-            <br />
-            <br />
-            Above all, I’m here to help you get where you want to be. Whether
-            you’re struggling with boundaries, confronting difficult events from
-            your past, or battling any form of anxiety or depression, I’m here
-            to listen and assist.
-            <br />
-            <br />
-            During our sessions, I like to remind my clients,{" "}
-            <span className="quote">&quot;This is your time.&quot;</span> I will
-            gently encourage you to explore more about yourself, and you will
-            have the space and freedom to share as much or as little as you’re
-            comfortable with.
-          </p>
+          <div
+            className={`position-relative ${currentUser && "admin-hover-box"}`}
+          >
+            <p dangerouslySetInnerHTML={{ __html: aboutData.s1.content }} />
+            <EditButton
+              page="about"
+              section="s1"
+              field="content"
+              content={aboutData.s1.content}
+              isEditor={true}
+            />
+          </div>
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta">
           <div className="container text-center">
-            <motion.p
-              initial={{ opacity: 0, y: -6 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.4,
-                  delay: 0.3,
-                },
-              }}
-              viewport={{ once: true }}
+            <div
+              className={`position-relative ${
+                currentUser && "admin-hover-box"
+              }`}
             >
-              If you think we’d make a good team, give me a call at (774)
-              476-0487. We’ll introduce ourselves and discuss each of our
-              availabilities. Then, the beauty of a telehealth practice is that
-              you’ll be saving yourself the time and expense of a car trip.
-              Let’s chat!
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: -6 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.4,
+                    delay: 0.3,
+                  },
+                }}
+                viewport={{ once: true }}
+              >
+                {aboutData.footer.content}
+              </motion.p>
+              <EditButton
+                page="about"
+                section="footer"
+                field="content"
+                content={aboutData.footer.content}
+              />
+            </div>
             <div className="d-xl-flex gap-4 justify-content-center mt-4">
               <motion.a
                 initial={{ opacity: 0 }}
@@ -151,7 +170,7 @@ const About = () => {
                   },
                 }}
                 viewport={{ once: true }}
-                href="tel:+17744760487"
+                href={`tel:+1${siteSettings.contactInfo.phone}`}
               >
                 <button className="btn btn-tertiary">Lets have a call</button>
               </motion.a>
@@ -196,32 +215,22 @@ const About = () => {
                   alt="Psychology Today Logo"
                 />
               </div>
-              <p>
-                Life is one wild ride, isn’t it? I would like you to remember:
-                you are more than enough—just as you are. I’m here to help you
-                get where you want to be. If you’re struggling with depression,
-                anxiety, negative thoughts, low self-esteem, stress, life
-                transitions, insomnia, weight gain, or a chronic disease or
-                illness, I’m here to listen and assist.
-                <br />
-                <br />I prioritize a holistic approach to mental health. In our
-                sessions, we will be looking at everything that influences your
-                well-being. This includes your mind, along with your lifestyle,
-                moods, and emotions, as each aspect of our lives is deeply
-                interconnected.
-                <br />
-                <br />
-                During our sessions, I like to remind my clients,{" "}
-                <span className="quote">&quot;This is your time.&quot;</span> I
-                will gently encourage you to explore more about yourself, and
-                you will have the space and freedom to share as much or as
-                little as you’re comfortable with.
-                <br />
-                <br />
-                If you’re looking for compassionate women’s telehealth therapy,
-                give me a shout. I’m here to help you navigate this crazy
-                journey we call womanhood, one step at a time.
-              </p>
+              <div
+                className={`position-relative ${
+                  currentUser && "admin-hover-box"
+                }`}
+              >
+                <p
+                  dangerouslySetInnerHTML={{ __html: aboutData.pts.content }}
+                />
+                <EditButton
+                  page="about"
+                  section="pts"
+                  field="content"
+                  content={aboutData.pts.content}
+                  isEditor={true}
+                />
+              </div>
               <div className="d-flex flex-wrap gap-3 justify-content-center">
                 <Link to="/contact">
                   <button

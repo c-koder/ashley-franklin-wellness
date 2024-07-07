@@ -7,15 +7,17 @@ import { updateContent } from "../../services/content.service";
 const EditorDialog = ({ page, section, field, isEditor, content }) => {
   const [data, setData] = useState("");
 
+  const [editorValue, setEditorValue] = useState(
+    RichTextEditor.createEmptyValue()
+  );
+
+  const [error, setError] = useState(undefined);
+  const [processing, setProcessing] = useState(false);
+
   useEffect(() => {
     setData(content);
     setEditorValue(RichTextEditor.createValueFromString(content, "html"));
   }, [content]);
-
-  const [editorValue, setEditorValue] = useState(undefined);
-
-  const [error, setError] = useState(undefined);
-  const [processing, setProcessing] = useState(false);
 
   const handleContentChange = (value) => {
     setEditorValue(value);
@@ -23,7 +25,7 @@ const EditorDialog = ({ page, section, field, isEditor, content }) => {
   };
 
   const handleUpdateContent = async () => {
-    if (data === "") {
+    if (data.trim() === "") {
       setError("Please include the content!");
     } else {
       setError(undefined);
@@ -64,6 +66,7 @@ const EditorDialog = ({ page, section, field, isEditor, content }) => {
               data-bs-dismiss="modal"
               aria-label="Close"
               disabled={processing}
+              onClick={() => setError(undefined)}
             ></button>
           </div>
           <div className="modal-body p-4">
@@ -93,21 +96,18 @@ const EditorDialog = ({ page, section, field, isEditor, content }) => {
                         "BLOCKQUOTE_BUTTON",
                       ],
                       INLINE_STYLE_BUTTONS: [
-                        {
-                          label: "Bold",
-                          style: "BOLD",
-                        },
+                        { label: "Bold", style: "BOLD" },
                         { label: "Italic", style: "ITALIC" },
                         { label: "Underline", style: "UNDERLINE" },
                       ],
                       BLOCK_TYPE_DROPDOWN: [
                         { label: "Normal", style: "unstyled" },
-                        { label: "H1", style: "header-two" },
+                        { label: "H1", style: "header-one" },
                         { label: "H2", style: "header-two" },
                         { label: "H3", style: "header-three" },
                         { label: "H4", style: "header-four" },
-                        { label: "H5", style: "header-FOVE" },
-                        { label: "H6", style: "header-SIX" },
+                        { label: "H5", style: "header-five" },
+                        { label: "H6", style: "header-six" },
                       ],
                       BLOCK_TYPE_BUTTONS: [
                         {
@@ -123,8 +123,6 @@ const EditorDialog = ({ page, section, field, isEditor, content }) => {
                     editorClassName="rte-editor"
                     editorStyle={{ minHeight: 180 }}
                     required={true}
-                    type="string"
-                    multiline={true}
                   />
                 </div>
               </div>
@@ -139,6 +137,7 @@ const EditorDialog = ({ page, section, field, isEditor, content }) => {
               className="btn btn-secondary"
               data-bs-dismiss="modal"
               disabled={processing}
+              onClick={() => setError(undefined)}
             >
               Close
             </button>

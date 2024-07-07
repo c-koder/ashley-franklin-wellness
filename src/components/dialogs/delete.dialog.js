@@ -1,23 +1,23 @@
 import { useState } from "react";
 
-import { doc, deleteDoc } from "firebase/firestore";
+import { deleteArticle } from "../../services/article.service";
 
-import { db } from "../../config/fb";
-
-const DeleteDialog = ({ collection, item }) => {
+const DeleteDialog = ({ item }) => {
   const [error, setError] = useState(undefined);
   const [processing, setProcessing] = useState(false);
 
   const handleDelete = async () => {
-    setProcessing(true);
-    await deleteDoc(doc(db, collection, item.id))
-      .then(() => {
+    try {
+      setProcessing(true);
+      const result = await deleteArticle(item.id);
+      if (result) {
         window.location.reload();
-      })
-      .catch((err) => {
-        setProcessing(false);
-        setError("Failed to delete this item, try again later!");
-      });
+      }
+    } catch (error) {
+      setError("Failed to delete this item, try again later!");
+    } finally {
+      setProcessing(false);
+    }
   };
 
   return (

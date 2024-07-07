@@ -125,6 +125,7 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
               data-bs-dismiss="modal"
               aria-label="Close"
               disabled={processing}
+              onClick={() => setError(undefined)}
             ></button>
           </div>
           <div className="modal-body px-4 py-3">
@@ -260,6 +261,7 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
               className="btn btn-secondary"
               data-bs-dismiss="modal"
               disabled={processing}
+              onClick={() => setError(undefined)}
             >
               Close
             </button>

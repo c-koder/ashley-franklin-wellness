@@ -16,8 +16,6 @@ import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
 import { AsyncImage } from "../components/image.component";
 
-import EditorDialog from "../components/dialogs/editor.dialog";
-
 import EditButton from "../components/editBtn.component";
 
 import { handleFileUpload } from "../utils/functions";
@@ -32,14 +30,6 @@ const Home = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
   const homeData = siteContent.find((content) => content.id === "home");
-
-  const [editOptions, setEditOptions] = useState({
-    page: "home",
-    section: "",
-    field: "",
-    content: "",
-    isEditor: false,
-  });
 
   useEffect(() => {
     if (inView && !animated) {
@@ -77,7 +67,6 @@ const Home = () => {
 
   return (
     <div ref={ref} id="homePage">
-      <EditorDialog {...editOptions} />
       <section
         id="landingSection"
         className="d-flex flex-column justify-content-center align-items-center text-center"
@@ -102,7 +91,6 @@ const Home = () => {
                 section="landing"
                 field="title"
                 content={homeData.landing.title}
-                setOptions={setEditOptions}
               />
             </div>
           </div>
@@ -118,7 +106,6 @@ const Home = () => {
                 section="landing"
                 field="subtitle"
                 content={homeData.landing.subtitle}
-                setOptions={setEditOptions}
               />
             </div>
           </div>
@@ -150,7 +137,6 @@ const Home = () => {
               section="s1"
               field="title"
               content={homeData.s1.title}
-              setOptions={setEditOptions}
             />
           </div>
           <div className="row container tab1 mt-xl-5 mt-3 justify-content-center">
@@ -166,7 +152,6 @@ const Home = () => {
                   section="s1"
                   field="content"
                   content={homeData.s1.content}
-                  setOptions={setEditOptions}
                   isEditor={true}
                 />
               </div>
@@ -243,7 +228,6 @@ const Home = () => {
               section="s2"
               field="title"
               content={homeData.s2.title}
-              setOptions={setEditOptions}
             />
           </div>
           <div className="row container tab2 mt-xl-5 mt-3 justify-content-center">
@@ -296,7 +280,6 @@ const Home = () => {
                   section="s2"
                   field="content"
                   content={homeData.s2.content}
-                  setOptions={setEditOptions}
                   isEditor={true}
                 />
               </div>
@@ -322,7 +305,6 @@ const Home = () => {
               section="s3"
               field="title"
               content={homeData.s3.title}
-              setOptions={setEditOptions}
             />
           </div>
           <div className="row container tab3 mt-xl-5 mt-3 justify-content-center">
@@ -338,7 +320,6 @@ const Home = () => {
                   section="s3"
                   field="content"
                   content={homeData.s3.content}
-                  setOptions={setEditOptions}
                   isEditor={true}
                 />
               </div>
@@ -407,7 +388,6 @@ const Home = () => {
                 section="footer"
                 field="content"
                 content={homeData.footer.content}
-                setOptions={setEditOptions}
               />
             </div>
             <motion.div

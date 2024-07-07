@@ -43,6 +43,7 @@ import { getSettings } from "../services/settings.service";
 import { getContent } from "../services/content.service";
 import Settings from "./settings.page";
 import Login from "./login.page";
+import EditorDialog from "../components/dialogs/editor.dialog";
 
 const Main = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ const Main = () => {
   const authLoading = useSelector((state) => state.authLoading);
   const siteSettings = useSelector((state) => state.siteSettings);
   const currentUser = useSelector((state) => state.currentUser);
+  const editOptions = useSelector((state) => state.editOptions);
 
   const [meta, setMeta] = useState({ title: "", desc: "" });
 
@@ -124,6 +126,7 @@ const Main = () => {
         <title>{meta.title}</title>
         <meta name="description" content={meta.desc} />
       </Helmet>
+      <EditorDialog {...editOptions} />
       {!location.pathname.includes("admin") && (
         <a
           href="https://www.psychologytoday.com/profile/1035259"
