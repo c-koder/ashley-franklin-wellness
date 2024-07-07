@@ -64,6 +64,13 @@ const initialState = {
     },
   },
   siteContent: undefined,
+  editOptions: {
+    page: "home",
+    section: "",
+    field: "",
+    content: "",
+    isEditor: false,
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -80,6 +87,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, siteSettings: payload };
     case "SET_SITE_CONTENT":
       return { ...state, siteContent: payload };
+    case "SET_EDIT_OPTIONS":
+      return { ...state, editOptions: payload };
     default:
       return state;
   }

@@ -1,8 +1,9 @@
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditOptions } from "../store/actions";
 
-import { useSelector } from "react-redux";
-
-const EditButton = ({ setOptions, ...props }) => {
+const EditButton = (props) => {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
 
   return currentUser !== null ? (
@@ -12,9 +13,15 @@ const EditButton = ({ setOptions, ...props }) => {
       data-bs-target="#editorModal"
       style={props.style}
       onClick={() =>
-        setOptions({
-          ...props,
-        })
+        dispatch(
+          setEditOptions({
+            page: props.page,
+            section: props.section,
+            field: props.field,
+            content: props.content,
+            isEditor: props.isEditor,
+          })
+        )
       }
     >
       <PencilSquareIcon />

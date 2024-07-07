@@ -17,10 +17,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-}
+// body.modal-open {
+//   height: 100vh;
+//   overflow-y: hidden;
+// }
 
 a {
   text-decoration: none;
@@ -106,16 +106,21 @@ svg {
   &.btn-edit {
     display: none;
     position: absolute;
-    top: 0;
+    top: 0 !important;
     right: 0;
-    padding: 2px 6px 6px 8px !important;
+    left: auto;
+    width: fit-content !important;
+    height: fit-content !important;
+    padding: 0px 6px 4px 8px !important;
     background-color: $primary !important;
     border-radius: 4px;
+    box-shadow: none !important;
     transform: none !important;
 
     svg {
-      fill: $light;
-      width: 20px;
+      fill: $light !important;
+      stroke: none !important;
+      width: 18px !important;
     }
   }
 
@@ -128,10 +133,18 @@ svg {
 
 .admin-hover-box {
   outline: 1px dashed transparent;
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: 4px;
 
   &:hover {
+    outline-color: $primary;
+
+    .btn-edit {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: $mobile-res) {
     outline-color: $primary;
 
     .btn-edit {
@@ -636,6 +649,7 @@ svg {
     border-radius: 12px;
     overflow: hidden;
     height: 600px;
+    min-width: 400px;
     padding: 0;
     float: left;
     box-shadow: 45px 30px 80px -20px rgba($primary, 0.25);
@@ -767,6 +781,7 @@ svg {
     .img-box {
       height: 500px;
       float: none;
+      min-width: auto;
     }
 
     .title-box {
@@ -862,6 +877,15 @@ svg {
 
   .title-box {
     background-image: url(../assets/images/faq_img1.jpg);
+
+    .btn {
+      &.btn-plus {
+        svg {
+          stroke: $light;
+          width: 60px;
+        }
+      }
+    }
   }
 
   .cta {
@@ -902,9 +926,9 @@ svg {
       }
     }
 
-    .accordion-body {
+    .accordion-body p {
       overflow: hidden;
-      font-family: $font-secondary;
+      font-family: $font-secondary !important;
       font-size: 20px;
       font-weight: 500;
       color: $secondary;
@@ -1125,6 +1149,7 @@ svg {
     border-radius: 12px;
     overflow: hidden;
     height: 500px;
+    min-width: 360px;
     padding: 0;
     box-shadow: 45px 30px 80px -20px rgba($primary, 0.25);
 
@@ -1163,6 +1188,7 @@ svg {
 
     .img-box {
       width: 100%;
+      min-width: auto;
       height: 450px;
       float: none;
 
@@ -1195,6 +1221,17 @@ svg {
 
   .title-box {
     background-image: url(../assets/images/services_img1.jpg);
+
+    .btn {
+      box-shadow: none !important;
+
+      &.btn-plus {
+        svg {
+          stroke: $light;
+          width: 60px;
+        }
+      }
+    }
   }
 
   .cta {
@@ -1237,6 +1274,13 @@ svg {
     &.btn-primary {
       background-color: $light;
       color: $primary;
+    }
+
+    &.btn-secondary {
+      background-color: transparent;
+      color: $primary;
+      border: 2px solid $primary;
+      box-shadow: none !important;
     }
 
     &.btn-tertiary {
@@ -1315,7 +1359,9 @@ svg {
   }
 }
 
-#articleModal {
+#articleModal,
+#faqEditorModal,
+#editorModal {
   .modal-title {
     color: $primary;
     font-weight: 600;
@@ -1438,7 +1484,8 @@ svg {
   }
 }
 
-#deleteModal {
+#deleteModal,
+#deleteFaqModal {
   .btn {
     &.btn-danger,
     &.btn-light {
@@ -1451,6 +1498,13 @@ svg {
     &.btn-danger {
       color: $light !important;
     }
+  }
+}
+
+#editorModal,
+#faqEditorModal {
+  .form-group {
+    margin-bottom: 0;
   }
 }
 

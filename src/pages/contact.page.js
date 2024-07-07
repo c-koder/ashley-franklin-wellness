@@ -6,8 +6,15 @@ import { motion } from "framer-motion";
 
 import { useSelector } from "react-redux";
 
+import EditButton from "../components/editBtn.component";
+
 const Contact = () => {
   const form = useRef();
+
+  const siteContent = useSelector((state) => state.siteContent);
+  const currentUser = useSelector((state) => state.currentUser);
+
+  const contactData = siteContent.find((content) => content.id === "contact");
 
   const siteSettings = useSelector((state) => state.siteSettings);
 
@@ -62,7 +69,9 @@ const Contact = () => {
           },
         }}
         viewport={{ once: true }}
-        className="title-box"
+        className={`title-box position-relative ${
+          currentUser && "admin-hover-box"
+        }`}
       >
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -76,16 +85,28 @@ const Contact = () => {
           }}
           viewport={{ once: true }}
         >
-          Contact
+          {contactData.titlebox.title}
         </motion.h1>
+        <EditButton
+          page="contact"
+          section="titlebox"
+          field="title"
+          content={contactData.titlebox.title}
+        />
       </motion.div>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-xl-5 my-4 text-box">
-          <p className="text-center">
-            Put the self-help book down! I would love to hear from you. We can
-            talk about if we would be a great fit and get started on your
-            journey. I am happy to answer any questions you may have.
-          </p>
+          <div
+            className={`position-relative ${currentUser && "admin-hover-box"}`}
+          >
+            <p className="text-center">{contactData.s1.content}</p>
+            <EditButton
+              page="contact"
+              section="s1"
+              field="content"
+              content={contactData.s1.content}
+            />
+          </div>
           <form
             className="mt-5 pb-2 pb-xl-0"
             ref={form}
@@ -182,11 +203,17 @@ const Contact = () => {
             )}
           </form>
           <hr className="my-xl-5 my-4" />
-          <p className="text-center">
-            I do not provide crisis services. If you are experiencing an
-            emergency, please call 9-8-8, the 24 hour Suicide & Crisis Lifeline,
-            or go to the nearest emergency room.
-          </p>
+          <div
+            className={`position-relative ${currentUser && "admin-hover-box"}`}
+          >
+            <p className="text-center">{contactData.s2.content}</p>
+            <EditButton
+              page="contact"
+              section="s2"
+              field="content"
+              content={contactData.s2.content}
+            />
+          </div>
           <p className="text-center mt-3">
             <span>Phone: </span>
             {siteSettings.contactInfo.phone}

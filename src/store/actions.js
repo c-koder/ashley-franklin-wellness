@@ -32,3 +32,10 @@ export const setSiteContent = (payload) => {
     payload: payload,
   };
 };
+
+export const setEditOptions = (payload) => {
+  return {
+    type: "SET_EDIT_OPTIONS",
+    payload: payload,
+  };
+};

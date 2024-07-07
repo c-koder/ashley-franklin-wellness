@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import { motion } from "framer-motion";
-
 import { Helmet } from "react-helmet";
 
 import moment from "moment";
@@ -77,43 +75,6 @@ const Article = () => {
               <p className="date">{moment(article.publishDate).format("ll")}</p>
             </div>
             <p dangerouslySetInnerHTML={{ __html: article.content }} />
-          </div>
-          <div className="d-flex flex-column justify-content-center align-items-center cta mt-xl-5">
-            <div className="container text-center">
-              <motion.p
-                initial={{ opacity: 0, y: -6 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.4,
-                  },
-                }}
-                viewport={{ once: true }}
-              >
-                Because let’s face it, your journey to wellness is yours alone,
-                <br />
-                and it’s about time you had someone in your corner to support
-                you through it all.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: -6 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.3,
-                    delay: 0.6,
-                  },
-                }}
-                viewport={{ once: true }}
-              >
-                <Link to="/contact">
-                  <button className="btn btn-primary">Give a shout!</button>
-                </Link>
-              </motion.div>
-            </div>
           </div>
         </section>
       </div>

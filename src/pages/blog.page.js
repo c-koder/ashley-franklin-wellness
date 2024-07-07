@@ -23,8 +23,13 @@ import Loader from "../components/loader.component";
 
 import { getAllArticles, updateArticle } from "../services/article.service";
 
+import EditButton from "../components/editBtn.component";
+
 const Blog = () => {
   const currentUser = useSelector((state) => state.currentUser);
+  const siteContent = useSelector((state) => state.siteContent);
+
+  const blogData = siteContent.find((content) => content.id === "blog");
 
   const [data, setData] = useState([]);
   const [featuredArticle, setFeaturedArticle] = useState(null);
@@ -72,7 +77,9 @@ const Blog = () => {
           },
         }}
         viewport={{ once: true }}
-        className="title-box mb-xl-5"
+        className={`title-box mb-xl-5 position-relative ${
+          currentUser && "admin-hover-box"
+        }`}
       >
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -86,7 +93,7 @@ const Blog = () => {
           }}
           viewport={{ once: true }}
         >
-          Therapy Blog
+          {blogData.titlebox.title}
           {currentUser !== null && (
             <button
               className="btn btn-plus ms-3"
@@ -97,13 +104,18 @@ const Blog = () => {
             </button>
           )}
         </motion.h1>
+        <EditButton
+          page="blog"
+          section="titlebox"
+          field="title"
+          content={blogData.titlebox.title}
+        />
       </motion.div>
-
       <ArticleDialog
         isEdit={editArticle !== undefined}
         editingArticle={editArticle}
       />
-      <DeleteDialog collection={"articles"} item={deleteArticle} />
+      <DeleteDialog item={deleteArticle} />
 
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-5">
@@ -259,23 +271,32 @@ const Blog = () => {
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta mt-xl-5">
           <div className="container text-center">
-            <motion.p
-              initial={{ opacity: 0, y: -6 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.5,
-                  delay: 0.4,
-                },
-              }}
-              viewport={{ once: true }}
+            <div
+              className={`position-relative ${
+                currentUser && "admin-hover-box"
+              }`}
             >
-              Because let’s face it, your journey to wellness is yours alone,
-              <br />
-              and it’s about time you had someone in your corner to support you
-              through it all.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: -6 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: 0.4,
+                  },
+                }}
+                viewport={{ once: true }}
+              >
+                {blogData.footer.content}
+              </motion.p>
+              <EditButton
+                page="blog"
+                section="footer"
+                field="content"
+                content={blogData.footer.content}
+              />
+            </div>
             <motion.div
               initial={{ opacity: 0, y: -6 }}
               whileInView={{

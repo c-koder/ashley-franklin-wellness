@@ -1,4 +1,11 @@
-import { doc, getDocs, updateDoc, collection, query } from "firebase/firestore";
+import {
+  doc,
+  getDocs,
+  updateDoc,
+  collection,
+  query,
+  deleteField,
+} from "firebase/firestore";
 import { db } from "../config/fb";
 
 const getContent = async () => {
@@ -31,4 +38,30 @@ const updateContent = async (page, section, field, value) => {
   }
 };
 
-export { getContent, updateContent };
+const updateFaqContent = async (section, updates) => {
+  try {
+    const docRef = doc(db, "content", "faq");
+    const updateData = {
+      [`${section}.question`]: updates.question,
+      [`${section}.content`]: updates.content,
+    };
+    await updateDoc(docRef, updateData);
+    return true;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const deleteContent = async (collection, id) => {
+  try {
+    await updateDoc(doc(db, "content", collection), {
+      [id]: deleteField(),
+    });
+
+    return true;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export { getContent, updateContent, updateFaqContent, deleteContent };

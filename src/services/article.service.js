@@ -8,6 +8,7 @@ import {
   updateDoc,
   where,
   limit,
+  deleteDoc,
 } from "firebase/firestore";
 
 import { db } from "../config/fb";
@@ -99,4 +100,20 @@ const isSlugExists = async (slug) => {
   }
 };
 
-export { getAllArticles, getArticle, createArticle, updateArticle };
+const deleteArticle = async (id) => {
+  try {
+    await deleteDoc(doc(db, "articles", id));
+
+    return true;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export {
+  getAllArticles,
+  getArticle,
+  createArticle,
+  updateArticle,
+  deleteArticle,
+};
