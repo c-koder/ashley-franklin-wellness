@@ -18,7 +18,7 @@ import Footer from "../components/footer.component";
 import Navbar from "../components/navbar.component";
 import Article from "./article.page";
 
-import { ptsVerified2 } from "../utils/images";
+import { certification1, ptsVerified2 } from "../utils/images";
 
 import { routes } from "./routes";
 
@@ -137,6 +137,13 @@ const Main = () => {
           <img src={ptsVerified2} alt="pts-verified2" />
         </a>
       )}
+      <div className="sx-verified-seal" style={{ left: "auto", right: "25px" }}>
+        <img
+          src={certification1}
+          alt="pts-verified2"
+          style={{ width: "100px", opacity: 0.9 }}
+        />
+      </div>
       {!location.pathname.includes("admin") && <Navbar />}
       <Tooltip id="main-tooltip" place="bottom" />
       <Routes>
