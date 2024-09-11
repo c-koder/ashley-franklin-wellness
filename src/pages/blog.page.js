@@ -1,28 +1,21 @@
 import { useState, useEffect } from "react";
-
 import { motion } from "framer-motion";
-
 import moment from "moment";
-
 import { Link } from "react-router-dom";
-
 import {
   PencilIcon,
   PlusCircleIcon,
   TrashIcon,
   StarIcon,
 } from "@heroicons/react/24/outline";
-
 import { useSelector } from "react-redux";
-
 import ArticleDialog from "../components/dialogs/article.dialog";
-
 import DeleteDialog from "../components/dialogs/delete.dialog";
-
 import Loader from "../components/loader.component";
-
-import { getAllArticles, updateArticle } from "../services/article.service";
-
+import {
+  getAllArticles,
+  updateFeaturedArticle,
+} from "../services/article.service";
 import EditButton from "../components/editBtn.component";
 
 const Blog = () => {
@@ -41,9 +34,18 @@ const Blog = () => {
     const fetchData = async () => {
       const articles = await getAllArticles();
       setData(articles);
+
       if (articles.length > 0) {
+        // Find the featured article or fall back to the latest published article
         const featured = articles.find((article) => article.featured);
-        setFeaturedArticle(featured || articles[0]);
+        setFeaturedArticle(
+          featured ||
+            articles.reduce((latest, article) =>
+              new Date(article.publishDate) > new Date(latest.publishDate)
+                ? article
+                : latest
+            )
+        );
       }
       setLoading(false);
     };
@@ -52,18 +54,118 @@ const Blog = () => {
   }, []);
 
   const handleUpdateFeatured = async (id, featured) => {
-    await updateArticle(id, { featured }).then(() => {
-      setData((prevData) =>
-        prevData.map((article) =>
-          article.id === id ? { ...article, featured } : article
-        )
+    try {
+      await updateFeaturedArticle(id, featured);
+
+      const articles = await getAllArticles();
+      setData(articles);
+      const updatedFeatured = articles.find((article) => article.featured);
+      setFeaturedArticle(
+        updatedFeatured ||
+          articles.reduce((latest, article) =>
+            new Date(article.publishDate) > new Date(latest.publishDate)
+              ? article
+              : latest
+          )
       );
-    });
+    } catch (error) {
+      console.error("Error updating featured article:", error);
+    }
   };
 
-  return loading ? (
-    <Loader />
-  ) : (
+  if (loading) {
+    return <Loader />;
+  }
+
+  // Prepare articles for display
+  const featuredArticleContent = featuredArticle ? (
+    <div className="latest-article">
+      <div className="main-img-wrapper">
+        <Link to={`/blog/${featuredArticle.slug}`}>
+          <img src={featuredArticle.image} alt={featuredArticle.title} />
+        </Link>
+      </div>
+      <div className="content">
+        <Link to={`/blog/${featuredArticle.slug}`}>
+          <h2>{featuredArticle.title}</h2>
+        </Link>
+        <div className="hstack gap-1 author-wrapper">
+          <div className="author-details">
+            <p className="name">{featuredArticle.author}</p>
+            <p> • </p>
+            <p className="date">
+              {moment(featuredArticle.publishDate).format("lll")}
+            </p>
+          </div>
+        </div>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: featuredArticle.content.substring(0, 200) + "...",
+          }}
+        />
+        {currentUser && (
+          <div className="hstack gap-2 action-btn-wrapper">
+            <button
+              className="btn edit-btn"
+              style={{ color: "#599ca4" }}
+              data-tooltip-id="main-tooltip"
+              data-tooltip-content={
+                featuredArticle.featured ? "Featured!" : "Feature this Article?"
+              }
+              onClick={() =>
+                handleUpdateFeatured(
+                  featuredArticle.id,
+                  !featuredArticle.featured
+                )
+              }
+            >
+              <StarIcon
+                style={{
+                  width: 22,
+                  fill: featuredArticle.featured ? "#599ca4" : "none",
+                }}
+              />
+            </button>
+            <button
+              className="btn edit-btn"
+              data-tooltip-id="main-tooltip"
+              data-tooltip-content="Edit"
+              data-bs-toggle="modal"
+              data-bs-target="#articleModal"
+              onClick={() => setEditArticle(featuredArticle)}
+            >
+              <PencilIcon />
+            </button>
+            <button
+              className="btn edit-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteModal"
+              data-tooltip-id="main-tooltip"
+              data-tooltip-content="Delete"
+              onClick={() =>
+                setDeleteArticle({
+                  id: featuredArticle.id,
+                  name: featuredArticle.title,
+                })
+              }
+            >
+              <TrashIcon />
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  ) : null;
+
+  const otherArticles = data.filter(
+    (article) => article.id !== (featuredArticle ? featuredArticle.id : null)
+  );
+
+  const latestArticles = otherArticles.sort(
+    (a, b) => new Date(b.publishDate) - new Date(a.publishDate)
+  );
+
+  return (
     <div id="blogPage">
       <motion.div
         initial={{ opacity: 0, y: -12 }}
@@ -86,19 +188,17 @@ const Blog = () => {
           whileInView={{
             opacity: 1,
             y: 0,
-            transition: {
-              duration: 0.45,
-              delay: 0.3,
-            },
+            transition: { duration: 0.45, delay: 0.3 },
           }}
           viewport={{ once: true }}
         >
           {blogData.titlebox.title}
-          {currentUser !== null && (
+          {currentUser && (
             <button
               className="btn btn-plus ms-3"
               data-bs-toggle="modal"
               data-bs-target="#articleModal"
+              onClick={() => setEditArticle(undefined)}
             >
               <PlusCircleIcon />
             </button>
@@ -119,99 +219,12 @@ const Blog = () => {
 
       <section className="d-flex flex-column justify-content-center align-items-center">
         <div className="container col-xl-7 my-5">
-          {data.length > 0 ? (
+          {featuredArticleContent && (
             <div className="row">
-              <div className="col-lg">
-                <div className="latest-article">
-                  <div className="main-img-wrapper">
-                    <Link to={`/blog/${featuredArticle.slug}`}>
-                      <img
-                        src={featuredArticle.image}
-                        alt={featuredArticle.title}
-                      />
-                    </Link>
-                  </div>
-                  <div className="content">
-                    <Link to={`/blog/${featuredArticle.slug}`}>
-                      <h2>{featuredArticle.title}</h2>
-                    </Link>
-                    <div className="hstack gap-1 author-wrapper">
-                      <div className="author-details">
-                        <p className="name">{featuredArticle.author}</p>
-                        <p> • </p>
-                        <p className="date">
-                          {moment(featuredArticle.publishDate).format("lll")}
-                        </p>
-                      </div>
-                    </div>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          featuredArticle.content.substring(0, 200) + "...",
-                      }}
-                    />
-                    {currentUser !== null && (
-                      <div className="hstack gap-2 action-btn-wrapper">
-                        <button
-                          className="btn edit-btn"
-                          style={{
-                            color: "#599ca4",
-                          }}
-                          data-tooltip-id="main-tooltip"
-                          data-tooltip-content={
-                            featuredArticle.featured
-                              ? "Featured!"
-                              : "Feature this Article?"
-                          }
-                          onClick={() =>
-                            handleUpdateFeatured(
-                              featuredArticle.id,
-                              !featuredArticle.featured
-                            )
-                          }
-                        >
-                          <StarIcon
-                            style={{
-                              width: 22,
-                              fill: featuredArticle.featured
-                                ? "#599ca4"
-                                : "none",
-                            }}
-                          />
-                        </button>
-                        <button
-                          className="btn edit-btn"
-                          data-tooltip-id="main-tooltip"
-                          data-tooltip-content="Edit"
-                          data-bs-toggle="modal"
-                          data-bs-target="#articleModal"
-                          onClick={() => setEditArticle(featuredArticle)}
-                        >
-                          <PencilIcon />
-                        </button>
-                        <button
-                          className="btn edit-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#deleteModal"
-                          data-tooltip-id="main-tooltip"
-                          data-tooltip-content="Delete"
-                          onClick={() =>
-                            setDeleteArticle({
-                              id: featuredArticle.id,
-                              name: featuredArticle.title,
-                            })
-                          }
-                        >
-                          <TrashIcon />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {data.length > 1 && (
-                <div className="col-md-auto col-lg-5 d-block">
-                  {data.slice(1).map((article) => (
+              <div className="col-lg">{featuredArticleContent}</div>
+              {latestArticles.length > 0 && (
+                <div className="col-xxl-5 col-xl-7 d-block">
+                  {latestArticles.map((article) => (
                     <div
                       key={article.id}
                       className="latest-article latest-article-mini hstack"
@@ -234,8 +247,31 @@ const Blog = () => {
                             </p>
                           </div>
                         </div>
-                        {currentUser !== null && (
+                        {currentUser && (
                           <div className="hstack gap-2 action-btn-wrapper">
+                            <button
+                              className="btn edit-btn"
+                              style={{ color: "#599ca4" }}
+                              data-tooltip-id="main-tooltip"
+                              data-tooltip-content={
+                                article.featured
+                                  ? "Featured!"
+                                  : "Feature this Article?"
+                              }
+                              onClick={() =>
+                                handleUpdateFeatured(
+                                  article.id,
+                                  !article.featured
+                                )
+                              }
+                            >
+                              <StarIcon
+                                style={{
+                                  width: 22,
+                                  fill: article.featured ? "#599ca4" : "none",
+                                }}
+                              />
+                            </button>
                             <button
                               className="btn edit-btn"
                               data-bs-toggle="modal"
@@ -265,9 +301,8 @@ const Blog = () => {
                 </div>
               )}
             </div>
-          ) : (
-            <p className="text-center">No articles yet!</p>
           )}
+          {data.length === 0 && <p className="text-center">No articles yet!</p>}
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center cta mt-xl-5">
           <div className="container text-center">
@@ -281,10 +316,7 @@ const Blog = () => {
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.4,
-                  },
+                  transition: { duration: 0.5, delay: 0.4 },
                 }}
                 viewport={{ once: true }}
               >
@@ -302,10 +334,7 @@ const Blog = () => {
               whileInView={{
                 opacity: 1,
                 y: 0,
-                transition: {
-                  duration: 0.3,
-                  delay: 0.6,
-                },
+                transition: { duration: 0.3, delay: 0.6 },
               }}
               viewport={{ once: true }}
             >
