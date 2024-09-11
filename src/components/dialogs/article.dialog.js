@@ -13,7 +13,7 @@ import { createArticle, updateArticle } from "../../services/article.service";
 const ArticleDialog = ({ isEdit, editingArticle }) => {
   const [data, setData] = useState({
     title: "",
-    author: auth.currentUser.displayName,
+    author: auth?.currentUser?.displayName || "",
     metaTitle: "",
     metaDescription: "",
     image: null,
