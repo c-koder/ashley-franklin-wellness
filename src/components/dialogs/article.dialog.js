@@ -40,7 +40,7 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
     } else {
       setData({
         title: "",
-        author: auth.currentUser.displayName,
+        author: auth?.currentUser?.displayName || "",
         metaTitle: "",
         metaDescription: "",
         image: null,
