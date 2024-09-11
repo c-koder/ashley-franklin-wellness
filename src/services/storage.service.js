@@ -2,10 +2,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { storage } from "../config/fb";
 
-const uploadFile = (file) => {
+const uploadFile = (file, name = null) => {
   return new Promise((resolve, reject) => {
     const uploadTask = uploadBytesResumable(
-      ref(storage, "content/" + file.name),
+      ref(storage, "content/" + (name || file.name)),
       file
     );
 

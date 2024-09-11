@@ -13,12 +13,12 @@ import { createArticle, updateArticle } from "../../services/article.service";
 const ArticleDialog = ({ isEdit, editingArticle }) => {
   const [data, setData] = useState({
     title: "",
+    author: auth.currentUser.displayName,
     metaTitle: "",
     metaDescription: "",
-    image: "",
+    image: null,
     alt: "",
     keywords: [],
-    author: "",
     publishDate: "",
     slug: "",
     content: "",
@@ -37,6 +37,20 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
       setEditorValue(
         RichTextEditor.createValueFromString(editingArticle.content, "html")
       );
+    } else {
+      setData({
+        title: "",
+        author: auth.currentUser.displayName,
+        metaTitle: "",
+        metaDescription: "",
+        image: null,
+        alt: "",
+        keywords: [],
+        publishDate: "",
+        slug: "",
+        content: "",
+      });
+      setEditorValue(RichTextEditor.createValueFromString("", "html"));
     }
   }, [editingArticle]);
 
@@ -60,14 +74,16 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
   const handleSubmitArticle = async () => {
     if (data.title === "") {
       setError("Please include the article title!");
+    } else if (data.author === "") {
+      setError("Please include the author!");
     } else if (data.content === "") {
       setError("Please include the article content!");
     } else if (data.metaTitle === "") {
       setError("Please include the article meta title!");
     } else if (data.metaDescription === "") {
       setError("Please include the article meta description!");
-    } else if (data.image === "") {
-      setError("Please include the article image!");
+    } else if (data.image === null) {
+      setError("Please select the article image!");
     } else if (data.alt === "") {
       setError("Please include the image alt text!");
     } else if (data.keywords.length === 0) {
@@ -88,7 +104,6 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
             window.location.reload();
           }
         } else {
-          d.author = auth.currentUser.displayName;
           d.publishDate = moment().format();
           const result = await createArticle(d);
           if (result) {
@@ -138,6 +153,17 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
                 className="form-control shadow-none"
                 id="newArticleTitle"
                 placeholder="Article title"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="newArticleAuthor">Author</label>
+              <input
+                type="text"
+                value={data.author}
+                onChange={(e) => setData({ ...data, author: e.target.value })}
+                className="form-control shadow-none"
+                id="newArticleAuthor"
+                placeholder="Article author"
               />
             </div>
             <div className="form-group w-100">
@@ -215,15 +241,22 @@ const ArticleDialog = ({ isEdit, editingArticle }) => {
                 placeholder="Article meta description"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group d-flex flex-column">
               <label htmlFor="newArticleImgSrc">Image URL</label>
+              {typeof data.image === "string" && (
+                <a
+                  className="mb-2"
+                  href={data.image}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {data.image}
+                </a>
+              )}
               <input
-                type="text"
-                value={data.image}
-                onChange={(e) => setData({ ...data, image: e.target.value })}
-                className="form-control shadow-none"
+                type="file"
                 id="newArticleImgSrc"
-                placeholder="Provide a valid hero image url"
+                onChange={(e) => setData({ ...data, image: e.target.files[0] })}
               />
             </div>
             <div className="form-group">

@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../config/fb";
+import { uploadFile } from "./storage.service";
 
 const getAllArticles = async () => {
   try {
@@ -59,6 +60,9 @@ const createArticle = async (data) => {
       throw new Error("Slug already exists.");
     }
 
+    const url = await uploadFile(data.image, data.slug);
+    data.image = url;
+
     await addDoc(collection(db, "articles"), data);
     return true;
   } catch (error) {
@@ -78,9 +82,42 @@ const updateArticle = async (id, oldValues, newValues) => {
       throw new Error("Slug already exists.");
     }
 
+    if (typeof newValues.image !== "string") {
+      const url = await uploadFile(updates.image, newValues.slug);
+      updates.image = url;
+    }
+
     await updateDoc(doc(db, "articles", id), updates);
     return true;
   } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const updateFeaturedArticle = async (id, featured) => {
+  try {
+    const articlesSnapshot = await getDocs(collection(db, "articles"));
+
+    const updates = articlesSnapshot.docs
+      .map((doc) => {
+        if (featured && doc.id !== id) {
+          return updateDoc(doc.ref, { featured: false });
+        }
+        if (!featured && doc.id === id) {
+          return updateDoc(doc.ref, { featured: false });
+        }
+        if (featured && doc.id === id) {
+          return updateDoc(doc.ref, { featured: true });
+        }
+        return null;
+      })
+      .filter((update) => update !== null);
+
+    await Promise.all(updates);
+
+    return true;
+  } catch (error) {
+    console.error("Error updating featured articles:", error);
     throw new Error(error.message);
   }
 };
@@ -115,5 +152,6 @@ export {
   getArticle,
   createArticle,
   updateArticle,
+  updateFeaturedArticle,
   deleteArticle,
 };

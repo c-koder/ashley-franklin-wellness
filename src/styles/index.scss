@@ -1609,9 +1609,8 @@ svg {
       }
 
       .action-btn-wrapper {
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
+        position: relative;
+        margin-left: auto;
 
         .edit-btn {
           position: relative;
@@ -1676,6 +1675,8 @@ svg {
 
   .latest-article-mini {
     margin-bottom: 25px;
+    height: 120px;
+    overflow: hidden;
     position: relative;
     top: 0;
     @include transition;
@@ -1686,7 +1687,7 @@ svg {
 
     .main-img-wrapper {
       max-width: 120px;
-      height: 120px;
+      height: 100%;
       overflow: hidden;
       border-radius: 5px;
       border: 1px solid rgba($primary, 0.2);
@@ -1705,9 +1706,7 @@ svg {
       }
 
       .action-btn-wrapper {
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
+        position: relative;
 
         .edit-btn {
           position: relative;
@@ -1825,6 +1824,7 @@ svg {
     img {
       width: 100%;
       object-fit: cover;
+      object-position: top;
     }
   }
 
