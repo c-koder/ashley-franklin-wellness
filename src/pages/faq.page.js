@@ -355,6 +355,29 @@ const FAQ = () => {
                         className="accordion-body"
                         dangerouslySetInnerHTML={{ __html: item.content }}
                       />
+                      {item.question === "Do You Take My Insurance?" && (
+                        <div>
+                          <iframe
+                            width="100%"
+                            height="400"
+                            style={{
+                              border: "none",
+                              borderRadius: "20px",
+                              margin: "auto",
+                              display: "block",
+                            }}
+                            onload="const resize=() => this.height=this.clientWidth >= 600?350:590;resize();window.addEventListener('resize', resize);"
+                            src="https://app.mentaya.com/public/practices/tCKq8pUeLcHaN3L787Hl/eligibility/widget"
+                            title="Check Mentaya eligibility"
+                          ></iframe>
+                          <p className="accordion-body text-center">
+                            We have partnered with Mentaya to help clients use
+                            their out-of-network benefits to save money on
+                            therapy. Use this tool below to see if you qualify
+                            for reimbursement for my services.
+                          </p>
+                        </div>
+                      )}
                     </div>
                     {currentUser !== null && (
                       <div>
